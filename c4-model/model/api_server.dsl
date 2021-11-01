@@ -1,0 +1,9 @@
+api_server = container "Aplikacja serwerowa" "Serwer API dla aplikacji klienckich w architekturze mikroserwisowej z komunikacją asynchroniczną" "Java & Spring Platform" "server_app,spring_white,black_stroke,intensive_blue_background,light_gray_font" {
+    api_gateway = component "Brama API" "Brama API, odpowiadająca za komunikację z aplikacjami zewnętrznymi, uwierzytelnianie oraz przekazywanie żądań do odpowiednich mikroserwisów" "Java & Spring Platform" "api_gateway,spring_green,gray_stroke,light_blue_background,black_font"
+    authentication_ms = component "Mikroserwis uwierzytelniania" "Odpowiada za uwierzytelnienie użytkowników" "Java, Spring Platform" "microservice,spring_green,gray_stroke,light_blue_background,black_font"
+    registration_ms = component "Mikroserwis rejestracji" "Odpowiada za tworzenie kont nowych użytkowników, zarówno uczniów jak i nauczycieli" "Java, Spring Platform" "microservice,spring_green,gray_stroke,light_blue_background,black_font"
+    booking_ms = component "Mikroserwis rezerwacji" "Odpowiada za proces zapisywania ucznia na zajęcia, zmiany terminów zajęć i ich odwoływanie" "Java, Spring Platform" "microservice,spring_white,black_stroke,intensive_blue_background,light_gray_font"
+    courses_management_ms = component "Mikroserwis zarzadzania kursami" "Odpowiada za operacje związane z tworzeniem, edytowaniem i usuwaniem kursów nauczyciela" "Java, Spring Platform" "microservice,spring_green,gray_stroke,light_blue_background,black_font"
+    meetings_ms = component "Mikroserwis spotkań" "Odpowiada za cały proces przeprowadzania spotkania" "Java, Spring Platform" "microservice,spring_green,gray_stroke,light_blue_background,black_font"
+    reviews_ms = component "Mikroserwis podsumowania spotkań" "Odpowiada za podsumowanie spotkań i wystawianie recenzji" "Java, Spring Platform" "microservice,spring_green,gray_stroke,light_blue_background,black_font"
+}
