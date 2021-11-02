@@ -29,7 +29,7 @@ element "message_broker" {
 
 element "api_gateway" {
     shape Pipe
-    height 750
+    width 2000
 }
 
 element "microservice" {
