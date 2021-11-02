@@ -10,7 +10,11 @@ workspace "Tutio" "Aplikacja korepetycji online" {
         !include model/external_services.dsl
 
         # relations
-        !include relations/relations.dsl
+        !include relations/c1.dsl
+        !include relations/c2.dsl
+        !include relations/c3_management_app.dsl
+        !include relations/c3_client_apps.dsl
+        !include relations/c3_api_server.dsl
     }
 
     views {
