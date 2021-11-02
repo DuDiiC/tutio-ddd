@@ -31,3 +31,6 @@ element "web_rtc" {
 element "rabbitmq" {
     icon ../icons/rabbitmq_logo.png
 }
+element "twilio" {
+    icon ../icons/twilio_logo.png
+}
