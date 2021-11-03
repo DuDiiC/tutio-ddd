@@ -20,3 +20,11 @@ registration_ms -> message_broker "Publikuj"
 booking_ms -> message_broker "Publikuj"
 meetings_ms -> message_broker "Publikuj"
 reviews_ms -> message_broker "Publikuj"
+
+# microservices -> database
+authentication_ms -> database
+registration_ms -> database
+booking_ms -> database
+courses_management_ms -> database
+meetings_ms -> database
+reviews_ms -> database
