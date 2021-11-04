@@ -1,5 +1,7 @@
 workspace "Tutio" "Aplikacja korepetycji online" {
 
+    !docs doc
+
     model {
 
         # actors
