@@ -9,10 +9,10 @@ api_server -> message_broker "Publikuj"
 api_server -> database "" "JDBC"
 management_app -> message_broker "Publikuj"
 management_app -> database "" "JDBC"
-
-# systems -> external services
 client_apps -> web_rtc "WebRTC" "SIP"
 web_rtc -> api_server "" "JSON/HTTPS"
+
+# systems -> external services
 api_server -> google_calendar "Komunikacja z API" "JSON/HTTPS"
 api_server -> stripe "Komunikacja z API" "JSON/HTTPS"
 message_broker -> twilio "Komunikacja z API" "JSON/HTTPS"

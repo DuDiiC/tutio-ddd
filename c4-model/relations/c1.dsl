@@ -7,5 +7,3 @@ staff -> tutio "Rozpatrywanie podań nauczycieli, weryfikacja użytkowników, ro
 tutio -> stripe "Komunikacja z API" "JSON/HTTPS"
 tutio -> twilio "Komunikacja z API" "JSON/HTTPS"
 tutio -> google_calendar "Komunikacja z API" "JSON/HTTPS"
-tutio -> web_rtc "WebRTC" "SIP"
-web_rtc -> tutio "" "JSON/HTTPS"
