@@ -10,9 +10,11 @@ api_gateway -> booking_ms
 api_gateway -> courses_management_ms
 api_gateway -> meetings_ms
 api_gateway -> reviews_ms
+api_gateway -> chat_ms
 
 # microservices inside server
 meetings_ms -> reviews_ms ""
+reviews_ms -> payment_ms ""
 
 # message_broker incoming
 authentication_ms -> message_broker "Publikuj"
@@ -20,6 +22,7 @@ registration_ms -> message_broker "Publikuj"
 booking_ms -> message_broker "Publikuj"
 meetings_ms -> message_broker "Publikuj"
 reviews_ms -> message_broker "Publikuj"
+chat_ms -> message_broker "Publikuj"
 
 # microservices -> database
 authentication_ms -> database
