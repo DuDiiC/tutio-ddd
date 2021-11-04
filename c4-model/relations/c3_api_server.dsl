@@ -31,3 +31,7 @@ booking_ms -> database
 courses_management_ms -> database
 meetings_ms -> database
 reviews_ms -> database
+
+# microservices -> external services
+booking_ms -> google_calendar "Komunikacja z API" "JSON/HTTPS"
+payment_ms -> stripe "Komunikacja z API" "JSON/HTTPS"
