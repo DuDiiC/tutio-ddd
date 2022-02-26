@@ -1,4 +1,4 @@
-workspace "Tutio" "Aplikacja korepetycji online" {
+workspace "Tutio" "Aplikacja nauczania online" {
 
     !docs doc
 
