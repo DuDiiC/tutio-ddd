@@ -28,8 +28,8 @@ element "stripe" {
 element "web_rtc" {
     icon ../icons/web_rtc_logo.png
 }
-element "rabbitmq" {
-    icon ../icons/rabbitmq_logo.png
+element "apache_kafka" {
+    icon ../icons/apache_kafka_logo.png
 }
 element "twilio" {
     icon ../icons/twilio_logo.png
