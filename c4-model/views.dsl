@@ -22,8 +22,3 @@ component management_app "tutio_c3_management_app" {
 component api_server "tutio_c3_api_server" {
     include *
 }
-
-# C3
-component api_server_v2 "tutio_c3_api_server_v2" {
-    include *
-}

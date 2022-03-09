@@ -5,6 +5,4 @@ tutio = softwareSystem "Platforma korepetycji online Tutio" "" "platform,tutio_w
     !include database.dsl
     !include message_broker.dsl
     !include web_rtc_service.dsl
-
-    !include api_server_v2.dsl
 }

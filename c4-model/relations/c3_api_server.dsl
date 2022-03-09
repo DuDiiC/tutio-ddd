@@ -1,37 +1,42 @@
-# api_gateway incoming
+# components -> api_gateway
 client_apps -> api_gateway "" "JSON/HTTPS"
 web_rtc -> api_gateway "" "JSON/HTTPS"
-authentication_ms -> api_gateway "JWT"
+security_ms -> api_gateway "JWT"
 
-# api gateway outgoing
-api_gateway -> authentication_ms "Żądanie uwierzytelnienia"
+# api gateway -> microservices
+api_gateway -> security_ms "żądanie uwierzytelnienia"
 api_gateway -> registration_ms
 api_gateway -> booking_ms
-api_gateway -> courses_management_ms
 api_gateway -> meetings_ms
 api_gateway -> reviews_ms
+api_gateway -> courses_management_ms
+api_gateway -> tutor_profile_management
+api_gateway -> searching_ms
+api_gateway -> calendar_ms
 api_gateway -> chat_ms
 
-# microservices inside server
-meetings_ms -> reviews_ms ""
-reviews_ms -> payment_ms ""
-
-# message_broker incoming
-authentication_ms -> message_broker "Publikuj"
-registration_ms -> message_broker "Publikuj"
-booking_ms -> message_broker "Publikuj"
-meetings_ms -> message_broker "Publikuj"
-reviews_ms -> message_broker "Publikuj"
-chat_ms -> message_broker "Publikuj"
+# microservices -> message_broker
+registration_ms -> message_broker
+booking_ms -> message_broker
+meetings_ms -> message_broker
+reviews_ms -> message_broker
+courses_management_ms -> message_broker
+tutor_profile_management -> message_broker
+payment_ms -> message_broker
+calendar_ms -> message_broker
+chat_ms -> message_broker
 
 # microservices -> database
-authentication_ms -> database
+security_ms -> database
 registration_ms -> database
 booking_ms -> database
-courses_management_ms -> database
 meetings_ms -> database
 reviews_ms -> database
+courses_management_ms -> database
+tutor_profile_management -> database
+searching_ms -> database
+calendar_ms -> database
 
 # microservices -> external services
-booking_ms -> google_calendar "Komunikacja z API" "JSON/HTTPS"
-payment_ms -> stripe "Komunikacja z API" "JSON/HTTPS"
+calendar_ms -> google_calendar "integracja z API" "JSON/HTTPS"
+payment_ms -> stripe "integracja z API" "JSON/HTTPS"

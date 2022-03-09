@@ -17,8 +17,6 @@ workspace "Tutio" "Aplikacja nauczania online" {
         !include relations/c3_management_app.dsl
         !include relations/c3_client_apps.dsl
         !include relations/c3_api_server.dsl
-
-        !include relations/c3_api_server_v2.dsl
     }
 
     views {
