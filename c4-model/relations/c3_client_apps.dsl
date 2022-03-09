@@ -1,8 +1,8 @@
 # actors -> client apps
-student -> student_front_end "Wyszukiwanie kursów, zapisy na nie, branie udziału w zajęciach, wystawianie opinii"
-student -> student_mobile "Wyszukiwanie kursów, zapisy na nie, branie udziału w zajęciach, wystawianie opinii"
-tutor -> tutor_front_end "Zarządzanie kursami, prowadzenie zajęć, tworzenie podsumowań"
-tutor -> tutor_mobile "Zarządzanie kursami, prowadzenie zajęć, tworzenie podsumowań"
+student -> student_front_end "wyszukiwanie kursów, dokonywanie rezerwacji, branie udziału w zajęciach, wystawianie opinii"
+student -> student_mobile "wyszukiwanie kursów, dokonywanie rezerwacji, branie udziału w zajęciach, wystawianie opinii"
+tutor -> tutor_front_end "zarządzanie kursami, prowadzenie zajęć, tworzenie podsumowań"
+tutor -> tutor_mobile "zarządzanie kursami, prowadzenie zajęć, tworzenie podsumowań"
 
 # client_apps -> WebRTC
 student_front_end -> web_rtc "WebRTC" "SIP"
