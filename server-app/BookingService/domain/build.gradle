@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'groovy'
+}
+
+group 'com.ddd.tutio'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+sourceSets {
+    main {
+        java { srcDirs 'src/main/java' }
+        groovy { srcDirs = [ ] }
+    }
+    test {
+        java { srcDirs = [ ] }
+        groovy { srcDirs 'src/test/groovy' }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation testLibs.bundles.spock
+}
+
+test {
+    useJUnitPlatform()
+}
