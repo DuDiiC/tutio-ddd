@@ -1,8 +1,8 @@
 package com.ddd.tutio.reservation;
 
-import com.ddd.tutio.base.Aggregate;
+import com.ddd.tutio.base.AggregateRoot;
 
-class ReservationTemplate implements Aggregate<ReservationId> {
+class ReservationTemplate implements AggregateRoot<ReservationId> {
 
     private final ReservationId reservationId;
 
