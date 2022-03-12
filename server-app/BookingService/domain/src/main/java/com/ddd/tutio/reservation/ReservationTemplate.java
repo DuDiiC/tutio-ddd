@@ -12,7 +12,7 @@ class ReservationTemplate implements AggregateRoot<ReservationId> {
 
     @Override
     public ReservationId getIdentifier() {
-        return null;
+        return this.reservationId;
     }
 
     public Reservation toReservation() {
