@@ -27,6 +27,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+      - name: Make gradlew executable
+        run: chmod +x server-app/BookingService/gradlew
       - name: Build with Gradle
         run: server-app/BookingService/gradlew build
       - name: Archive test report
