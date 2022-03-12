@@ -1,0 +1,21 @@
+rootProject.name = 'BookingService'
+
+include 'domain'
+include 'application'
+include 'infrastructure'
+
+enableFeaturePreview('VERSION_CATALOGS')
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        testLibs {
+            alias('groovy-core').to('org.codehaus.groovy:groovy-all:3.0.8')
+            alias('spring-boot-starter-test').to('org.springframework.boot:spring-boot-starter-test:2.6.4')
+            alias('spock').to('org.spockframework:spock-core:2.1-M2-groovy-3.0')
+            alias('spock-spring').to('org.spockframework:spock-spring:2.1-groovy-3.0')
+
+            bundle('spock', ['groovy-core', 'spock'])
+            bundle('spockForSpring', ['groovy-core', 'spring-boot-starter-test', 'spock', 'spock-spring'])
+        }
+    }
+}
