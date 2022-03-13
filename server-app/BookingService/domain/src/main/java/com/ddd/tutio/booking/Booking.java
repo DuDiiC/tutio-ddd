@@ -46,7 +46,7 @@ class Booking implements AggregateRoot<BookingId> {
 
     public void approve() {
         // TODO - publish event
-        if (bookingCanBeApproved()) {
+        if (this.status.canBeApproved()) {
             this.status = BookingStatus.APPROVED;
         } else {
             throw new UnsupportedOperationException();
@@ -55,7 +55,7 @@ class Booking implements AggregateRoot<BookingId> {
 
     public void cancel() {
         // TODO - publish event
-        if (bookingCanBeCanceled()) {
+        if (this.status.canBeCancelled()) {
             this.status = BookingStatus.CANCELED;
         } else {
             throw new UnsupportedOperationException();
@@ -64,22 +64,10 @@ class Booking implements AggregateRoot<BookingId> {
 
     public void accept() {
         // TODO - publish event
-        if (bookingCanBeAccepted()) {
+        if (this.status.canBeAccepted()) {
             this.status = BookingStatus.ACCEPTED;
         } else {
             throw new UnsupportedOperationException();
         }
-    }
-
-    private boolean bookingCanBeApproved() {
-        return this.status.equals(BookingStatus.PLANNED);
-    }
-
-    private boolean bookingCanBeCanceled() {
-        return this.status.equals(BookingStatus.PLANNED);
-    }
-
-    private boolean bookingCanBeAccepted() {
-        return this.status.equals(BookingStatus.APPROVED);
     }
 }
