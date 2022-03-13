@@ -27,8 +27,8 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Archive test report
-        uses: actions/upload-artifact@v2
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
         with:
-          name: Test report
-          path: server-app/BookingService/build/reports/tests/test
+          files: test-results/**/*.xml
