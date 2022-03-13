@@ -30,4 +30,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: server-app/BookingService/build/test-results/**/*.xml
+          files: ./**/build/test-results/**/*.xml
