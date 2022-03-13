@@ -9,7 +9,7 @@ plugins {
 
 group 'com.ddd.tutio'
 version '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = JavaVersion.VERSION_17
 
 sourceSets {
     main {
@@ -40,9 +40,6 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-//    compileOnly 'org.springframework.boot:spring-boot-starter-tomcat'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation testLibs.bundles.spockForSpring
 }
 
