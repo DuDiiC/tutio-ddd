@@ -8,7 +8,7 @@ class Booking implements AggregateRoot<BookingId> {
 
     private final BookingId bookingId;
 
-    final LessonPrice lessonPrice;
+    private final LessonPrice lessonPrice;
 
     // other aggregates
     final CourseId courseId;
