@@ -8,6 +8,8 @@ class Booking implements AggregateRoot<BookingId> {
 
     private final BookingId bookingId;
 
+    final LessonPrice lessonPrice;
+
     // other aggregates
     final CourseId courseId;
     final PupilId pupilId;
@@ -16,6 +18,7 @@ class Booking implements AggregateRoot<BookingId> {
         this.bookingId = template.getIdentifier();
         this.courseId = template.courseId;
         this.pupilId = template.pupilId;
+        this.lessonPrice = template.lessonPrice;
     }
 
     @Override
