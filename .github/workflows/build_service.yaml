@@ -2,11 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - 'master'
-      - 'develop'
-    paths:
-      'server-app/**'
   pull_request:
     paths:
       'server-app/**'
@@ -27,12 +22,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+          cache: gradle
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Archive test report
-        uses: actions/upload-artifact@v2
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
         with:
-          name: Test report
-          path: server-app/BookingService/build/reports/tests/test
+          files: server-app/BookingService/build/test-results/**/*.xml
