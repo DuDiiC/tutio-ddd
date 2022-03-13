@@ -20,6 +20,7 @@ class BookingTemplate implements AggregateRoot<BookingId> {
         this.bookingId = bookingId;
         this.courseId = courseId;
         this.pupilId = pupilId;
+        // other currencies in the future
         this.lessonPrice = new LessonPrice(lessonPrice, Currency.PLN);
     }
 
