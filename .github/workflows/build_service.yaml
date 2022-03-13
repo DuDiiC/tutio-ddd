@@ -2,11 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - 'master'
-      - 'develop'
-    paths:
-      'server-app/**'
   pull_request:
     paths:
       'server-app/**'
