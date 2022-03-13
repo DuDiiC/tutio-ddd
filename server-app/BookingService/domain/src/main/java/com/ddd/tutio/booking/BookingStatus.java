@@ -2,11 +2,75 @@ package com.ddd.tutio.booking;
 
 enum BookingStatus {
 
-    PLANNED,
+    PLANNED {
+        @Override
+        boolean canBeApproved() {
+            return true;
+        }
 
-    APPROVED,
+        @Override
+        boolean canBeCancelled() {
+            return true;
+        }
 
-    CANCELED,
+        @Override
+        boolean canBeAccepted() {
+            return false;
+        }
+    },
 
-    ACCEPTED
+    APPROVED{
+        @Override
+        boolean canBeApproved() {
+            return false;
+        }
+
+        @Override
+        boolean canBeCancelled() {
+            return false;
+        }
+
+        @Override
+        boolean canBeAccepted() {
+            return true;
+        }
+    },
+
+    CANCELED{
+        @Override
+        boolean canBeApproved() {
+            return false;
+        }
+
+        @Override
+        boolean canBeCancelled() {
+            return false;
+        }
+
+        @Override
+        boolean canBeAccepted() {
+            return false;
+        }
+    },
+
+    ACCEPTED{
+        @Override
+        boolean canBeApproved() {
+            return false;
+        }
+
+        @Override
+        boolean canBeCancelled() {
+            return false;
+        }
+
+        @Override
+        boolean canBeAccepted() {
+            return false;
+        }
+    };
+
+    abstract boolean canBeApproved();
+    abstract boolean canBeCancelled();
+    abstract boolean canBeAccepted();
 }
