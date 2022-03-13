@@ -4,6 +4,7 @@ import com.ddd.tutio.base.AggregateRoot;
 import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
 
+import java.math.RoundingMode;
 import java.time.Instant;
 
 class Booking implements AggregateRoot<BookingId> {
@@ -28,5 +29,12 @@ class Booking implements AggregateRoot<BookingId> {
     @Override
     public BookingId getIdentifier() {
         return this.bookingId;
+    }
+
+    public MeetingCost calculateMeetingCost() {
+        var calculatedCost = lessonPrice.price
+                .multiply(this.meetingDuration.partOfHour())
+                .setScale(2, RoundingMode.HALF_UP);
+        return new MeetingCost(calculatedCost, this.lessonPrice.currency);
     }
 }

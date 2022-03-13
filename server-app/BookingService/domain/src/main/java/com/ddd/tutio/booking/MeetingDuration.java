@@ -1,5 +1,7 @@
 package com.ddd.tutio.booking;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -29,4 +31,17 @@ class MeetingDuration {
             throw new IllegalArgumentException("Too long meeting duration");
         }
     }
+
+    BigDecimal partOfHour() {
+        return BigDecimal
+                .valueOf(duration().toMinutes())
+                .divide(BigDecimal.valueOf(60L), 4, RoundingMode.CEILING);
+    }
+
+    Duration duration() {
+        return Duration.between(this.startTime, this.endTime)
+                .plusMinutes(1)
+                .minusSeconds(1);
+    }
+
 }

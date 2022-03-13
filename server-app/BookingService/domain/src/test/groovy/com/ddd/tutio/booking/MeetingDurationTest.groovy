@@ -69,4 +69,45 @@ class MeetingDurationTest extends Specification {
         "2022-01-10T10:15:00.00Z" | "2022-01-10T13:30:00.00Z"
         "2022-01-10T10:15:00.00Z" | "2022-02-10T10:00:00.00Z"
     }
+
+    def "Calculate duration correctly"(String startTime, String endTime, long durationInMinutes) {
+
+        given: "MeetingDuration instance"
+        def instance = new MeetingDuration(Instant.parse(startTime), Instant.parse(endTime));
+
+        when: "Calculate duration"
+        def result = instance.duration().toMinutes()
+
+        then: "Calculate duration correctly"
+        result == durationInMinutes
+
+        where: "Parameters"
+        startTime | endTime | durationInMinutes
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:15:00.00Z" | 60
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:15:00.01Z" | 60
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:15:01.00Z" | 61
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:16:01.29Z" | 62
+    }
+
+    def "Calculate part of hour correctly"(String startTime, String endTime, String partOfHour) {
+
+        given: "MeetingDuration instance"
+        def instance = new MeetingDuration(Instant.parse(startTime), Instant.parse(endTime));
+
+        when: "Calculate part of hour"
+        def result = instance.partOfHour()
+
+        then: "Calculate part of hour correctly"
+        result == new BigDecimal(partOfHour)
+
+        where: "Parameters"
+        startTime | endTime | partOfHour
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T10:45:00.00Z" | "0.5000"
+        "2022-01-10T10:00:00.00Z" | "2022-01-10T10:40:00.00Z" | "0.6667"
+        "2022-01-10T10:00:00.00Z" | "2022-01-10T10:45:00.00Z" | "0.7500"
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:15:00.00Z" | "1.0000"
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:15:01.00Z" | "1.0167"
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:16:01.29Z" | "1.0334"
+        "2022-01-10T10:15:00.00Z" | "2022-01-10T11:45:00.00Z" | "1.5000"
+    }
 }
