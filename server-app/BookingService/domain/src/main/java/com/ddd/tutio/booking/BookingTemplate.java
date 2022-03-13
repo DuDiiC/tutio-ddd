@@ -5,6 +5,7 @@ import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 class BookingTemplate implements AggregateRoot<BookingId> {
 
@@ -29,7 +30,7 @@ class BookingTemplate implements AggregateRoot<BookingId> {
         return this.bookingId;
     }
 
-    public Booking toBooking() {
-        return new Booking(this);
+    public Booking toBooking(Instant meetingStartTime, Instant meetingEndTime) {
+        return new Booking(this, meetingStartTime, meetingEndTime);
     }
 }
