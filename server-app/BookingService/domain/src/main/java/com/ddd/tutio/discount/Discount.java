@@ -1,4 +1,4 @@
-package com.ddd.tutio.discount.Discount;
+package com.ddd.tutio.discount;
 
 import com.ddd.tutio.booking.MeetingCost;
 
