@@ -1,18 +1,16 @@
 package com.ddd.tutio.booking
 
-import com.ddd.tutio.course.CourseId
-import com.ddd.tutio.pupil.PupilId
 import spock.lang.Specification
 
 import java.time.Duration
 import java.time.Instant
 
-class BookingTest extends Specification {
+class BookingTest extends Specification implements TestBookingFactory {
 
     def "Calculate meeting cost correctly"(String startTime, Long duration, String lessonPrice, String resultAmount) {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getInstance(Instant.parse(startTime), Duration.ofMinutes(duration), new BigDecimal(lessonPrice))
+        def booking = getInstance(Instant.parse(startTime), Duration.ofMinutes(duration), new BigDecimal(lessonPrice))
 
         when: "Calculate meeting cost"
         def result = booking.calculateMeetingCost()
@@ -32,7 +30,7 @@ class BookingTest extends Specification {
     def "Change status: PLANNED -> APPROVED"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
 
         when: "Try to approve booking"
         booking.approve()
@@ -51,7 +49,7 @@ class BookingTest extends Specification {
     def "Throw exception when try to approve approved booking"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
         booking.approve()
 
         when: "Approve approved booking"
@@ -64,7 +62,7 @@ class BookingTest extends Specification {
     def "Throw exception when try to approve canceled booking"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
         booking.cancel()
 
         when: "Approve canceled booking"
@@ -77,7 +75,7 @@ class BookingTest extends Specification {
     def "Status change: PLANNED -> CANCELED"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
 
         when: "Try to cancel booking"
         booking.cancel()
@@ -90,7 +88,7 @@ class BookingTest extends Specification {
     def "Throw exception when try to cancel approved booking"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
         booking.approve()
 
         when: "Try to cancel canceled booking"
@@ -103,7 +101,7 @@ class BookingTest extends Specification {
     def "Change status: APPROVED -> ACCEPTED"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
         booking.approve()
 
         when: "Try to aceept booking"
@@ -117,7 +115,7 @@ class BookingTest extends Specification {
     def "Throw exception when try to accept planned booking"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
 
         when: "Try to accept planned booking"
         booking.accept()
@@ -129,7 +127,7 @@ class BookingTest extends Specification {
     def "Throw exception when try to accept canceled booking"() {
 
         given: "Booking aggregate instance"
-        def booking = TestBookingFactory.getSimpleInstance()
+        def booking = getSimpleInstance()
         booking.cancel()
 
         when: "Try to accept canceled booking"
@@ -137,34 +135,5 @@ class BookingTest extends Specification {
 
         then: "Throw exception"
         thrown(UnsupportedOperationException.class)
-    }
-
-    private class TestBookingFactory {
-
-        private static final String RESERVATION_ID = "4ef61674-7608-11ec-90d6-0242ac120003"
-        private static final String COURSE_ID = "6a1a1932-7608-11ec-90d6-0242ac120003"
-        private static final String PUPIL_ID = "7b766e56-7608-11ec-90d6-0242ac120003"
-
-        static Booking getSimpleInstance() {
-            return new Booking(
-                    new BookingTemplate(
-                            new BookingId(UUID.fromString(RESERVATION_ID)),
-                            new CourseId(UUID.fromString(COURSE_ID)),
-                            new PupilId(UUID.fromString(PUPIL_ID)),
-                            new BigDecimal("100.00")),
-                    Instant.now(), Instant.now() + Duration.ofHours(1)
-            )
-        }
-
-        static Booking getInstance(Instant meetingStartTime, Duration meetingDuration, BigDecimal lessonPrice) {
-            return new Booking(
-                    new BookingTemplate(
-                            new BookingId(UUID.fromString(RESERVATION_ID)),
-                            new CourseId(UUID.fromString(COURSE_ID)),
-                            new PupilId(UUID.fromString(PUPIL_ID)),
-                            lessonPrice),
-                    meetingStartTime, meetingStartTime + meetingDuration
-            )
-        }
     }
 }
