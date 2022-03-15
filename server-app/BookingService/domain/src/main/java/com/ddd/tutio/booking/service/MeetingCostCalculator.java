@@ -21,19 +21,10 @@ class MeetingCostCalculator {
     }
 
     public MeetingCost calculateMeetingCost(Booking booking) {
-
-        // podstawowy koszt spotkania
         var baseCost = booking.calculateMeetingCost();
-
-        // obliczenie obniżek
         Map<Discount, BigDecimal> discountValues = calculateDiscounts(baseCost);
-
-        // lista zniżek, które się łączą
         BigDecimal combinedDiscount = calculateCombinedDiscountsValue(discountValues);
-
-        // wybranie najwyższej dostępnej zniżki spośród zniżek niełączących się z innymi
         BigDecimal maxNonCombinedDiscount = calculateMaxNonCombinedDiscountValue(discountValues);
-
         return baseCost.withDiscount(combinedDiscount.max(maxNonCombinedDiscount));
     }
 
@@ -48,7 +39,8 @@ class MeetingCostCalculator {
     private Map<Discount, BigDecimal> calculateDiscounts(MeetingCost calculatedCost) {
         return discounts.stream()
                 .collect(Collectors.toMap(
-                        Function.identity(), discount -> discount.calculateDiscount(calculatedCost)
+                        Function.identity(),
+                        discount -> discount.calculateDiscount(calculatedCost)
                 ));
     }
 
