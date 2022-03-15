@@ -1,5 +1,5 @@
 package com.ddd.tutio.booking;
 
-enum Currency {
+public enum Currency {
     PLN
 }
