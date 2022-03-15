@@ -2,7 +2,7 @@ package com.ddd.tutio.booking.service;
 
 import com.ddd.tutio.booking.Booking;
 import com.ddd.tutio.booking.MeetingCost;
-import com.ddd.tutio.discount.Discount.Discount;
+import com.ddd.tutio.discount.Discount;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package com.ddd.tutio.booking.service
 import com.ddd.tutio.booking.Currency
 import com.ddd.tutio.booking.MeetingCost
 import com.ddd.tutio.booking.TestBookingFactory
-import com.ddd.tutio.discount.Discount.Discount
+import com.ddd.tutio.discount.Discount
 import spock.lang.Specification
 
 import java.time.Duration
