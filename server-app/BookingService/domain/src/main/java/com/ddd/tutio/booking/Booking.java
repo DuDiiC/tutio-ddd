@@ -7,7 +7,7 @@ import com.ddd.tutio.pupil.PupilId;
 import java.math.RoundingMode;
 import java.time.Instant;
 
-class Booking implements AggregateRoot<BookingId> {
+public class Booking implements AggregateRoot<BookingId> {
 
     private final BookingId bookingId;
 
