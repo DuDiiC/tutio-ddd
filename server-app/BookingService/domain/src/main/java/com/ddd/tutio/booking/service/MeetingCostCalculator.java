@@ -5,30 +5,22 @@ import com.ddd.tutio.booking.MeetingCost;
 import com.ddd.tutio.discount.Discount;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class MeetingCostCalculator {
 
-    private final List<Discount> discounts;
-
-    public MeetingCostCalculator(List<Discount> discounts) {
-        this.discounts = Objects.requireNonNullElseGet(discounts, ArrayList::new);
-    }
-
-    public MeetingCost calculateMeetingCost(Booking booking) {
+    public MeetingCost calculateMeetingCost(Booking booking, List<Discount> discounts) {
         var baseCost = booking.calculateMeetingCost();
-        Map<Discount, BigDecimal> discountValues = calculateDiscounts(baseCost);
-        BigDecimal combinedDiscount = calculateCombinedDiscountsValue(discountValues);
-        BigDecimal maxNonCombinedDiscount = calculateMaxNonCombinedDiscountValue(discountValues);
+        Map<Discount, BigDecimal> discountValues = calculateDiscounts(baseCost, discounts);
+        BigDecimal combinedDiscount = calculateCombinedDiscountsValue(discounts, discountValues);
+        BigDecimal maxNonCombinedDiscount = calculateMaxNonCombinedDiscountValue(discounts, discountValues);
         return baseCost.withDiscount(combinedDiscount.max(maxNonCombinedDiscount));
     }
 
-    private BigDecimal calculateMaxNonCombinedDiscountValue(Map<Discount, BigDecimal> discountValues) {
+    private BigDecimal calculateMaxNonCombinedDiscountValue(List<Discount> discounts, Map<Discount, BigDecimal> discountValues) {
         return discounts.stream()
                 .filter(discount -> !discount.discountCombinesWithOthers())
                 .map(discountValues::get)
@@ -36,7 +28,7 @@ class MeetingCostCalculator {
                 .orElse(BigDecimal.ZERO);
     }
 
-    private Map<Discount, BigDecimal> calculateDiscounts(MeetingCost calculatedCost) {
+    private Map<Discount, BigDecimal> calculateDiscounts(MeetingCost calculatedCost, List<Discount> discounts) {
         return discounts.stream()
                 .collect(Collectors.toMap(
                         Function.identity(),
@@ -44,7 +36,7 @@ class MeetingCostCalculator {
                 ));
     }
 
-    private BigDecimal calculateCombinedDiscountsValue(Map<Discount, BigDecimal> discountValues) {
+    private BigDecimal calculateCombinedDiscountsValue(List<Discount> discounts, Map<Discount, BigDecimal> discountValues) {
         return discounts.stream()
                 .filter(Discount::discountCombinesWithOthers)
                 .map(discountValues::get)
