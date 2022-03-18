@@ -1,29 +1,27 @@
 package com.ddd.tutio.booking;
 
 import com.ddd.tutio.base.AggregateRoot;
+import com.ddd.tutio.booking.event.PlanBookingRequested;
 import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
 
 import java.math.RoundingMode;
-import java.time.Instant;
 
 public class Booking implements AggregateRoot<BookingId> {
-
-    private final BookingId bookingId;
-
-    private final MeetingDuration meetingDuration;
-    private final LessonPrice lessonPrice;
-    private BookingStatus status;
 
     // other aggregates
     final CourseId courseId;
     final PupilId pupilId;
+    private final BookingId bookingId;
+    private final MeetingDuration meetingDuration;
+    private final LessonPrice lessonPrice;
+    private BookingStatus status;
 
-    Booking(BookingTemplate template, Instant meetingStartTime, Instant meetingEndTime) {
+    Booking(BookingTemplate template, PlanBookingRequested event) {
         this.bookingId = template.getIdentifier();
         this.courseId = template.courseId;
         this.pupilId = template.pupilId;
-        this.meetingDuration = new MeetingDuration(meetingStartTime, meetingEndTime);
+        this.meetingDuration = new MeetingDuration(event.startTime, event.endTime);
         this.lessonPrice = template.lessonPrice;
         this.status = BookingStatus.PLANNED;
     }

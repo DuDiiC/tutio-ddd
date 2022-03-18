@@ -2,10 +2,9 @@ package com.ddd.tutio.booking;
 
 import com.ddd.tutio.base.AggregateRoot;
 import com.ddd.tutio.booking.event.BookingProcessStarted;
+import com.ddd.tutio.booking.event.PlanBookingRequested;
 import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
-
-import java.time.Instant;
 
 class BookingTemplate implements AggregateRoot<BookingId> {
 
@@ -26,7 +25,7 @@ class BookingTemplate implements AggregateRoot<BookingId> {
         return this.bookingId;
     }
 
-    public Booking toBooking(Instant meetingStartTime, Instant meetingEndTime) {
-        return new Booking(this, meetingStartTime, meetingEndTime);
+    public Booking toBooking(PlanBookingRequested event) {
+        return new Booking(this, event);
     }
 }
