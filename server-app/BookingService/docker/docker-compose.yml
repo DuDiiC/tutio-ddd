@@ -4,6 +4,7 @@ services:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmq
     volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
       - ./config/rabbitmq/definitions.json:/opt/definitions.json:ro
     environment:
       - RABBITMQ_DEFAULT_USER=user
@@ -14,3 +15,5 @@ services:
       - 5672:5672
       # HTTP management UI
       - 15672:15672
+volumes:
+  rabbitmq_data:
