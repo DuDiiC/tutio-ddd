@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 class MeetingCostCalculator {
 
     public MeetingCost calculateMeetingCost(Booking booking, List<Discount> discounts) {
-        var baseCost = booking.calculateMeetingCost();
+        var baseCost = booking.calculateBaseMeetingCost();
         Map<Discount, BigDecimal> discountValues = calculateDiscounts(baseCost, discounts);
         BigDecimal combinedDiscount = calculateCombinedDiscountsValue(discounts, discountValues);
         BigDecimal maxNonCombinedDiscount = calculateMaxNonCombinedDiscountValue(discounts, discountValues);
