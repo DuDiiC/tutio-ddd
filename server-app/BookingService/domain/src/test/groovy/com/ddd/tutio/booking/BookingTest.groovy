@@ -13,7 +13,7 @@ class BookingTest extends Specification implements TestBookingFactory {
         def booking = getInstance(Instant.parse(startTime), Duration.ofMinutes(duration), new BigDecimal(lessonPrice))
 
         when: "Calculate meeting cost"
-        def result = booking.calculateMeetingCost()
+        def result = booking.calculateBaseMeetingCost()
 
         then: "Calculate meeting cost correctly"
         result.currency == Currency.PLN
