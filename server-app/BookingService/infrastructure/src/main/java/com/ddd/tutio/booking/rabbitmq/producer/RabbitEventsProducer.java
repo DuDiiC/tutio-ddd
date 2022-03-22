@@ -1,7 +1,7 @@
 package com.ddd.tutio.booking.rabbitmq.producer;
 
 import com.ddd.tutio.base.DomainEvent;
-import comd.ddd.tutio.booking.port.event.producer.BookingEventsProducer;
+import com.ddd.tutio.booking.port.event.producer.BookingEventsProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

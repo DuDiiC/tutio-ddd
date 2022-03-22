@@ -1,4 +1,4 @@
-package comd.ddd.tutio.booking.port.event.producer;
+package com.ddd.tutio.booking.port.event.producer;
 
 import com.ddd.tutio.base.DomainEvent;
 

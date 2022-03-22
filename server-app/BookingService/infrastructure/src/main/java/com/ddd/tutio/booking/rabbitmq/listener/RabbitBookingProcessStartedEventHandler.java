@@ -4,7 +4,7 @@ import com.ddd.tutio.base.DomainEvent;
 import com.ddd.tutio.booking.event.BookingProcessStarted;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import comd.ddd.tutio.booking.port.event.listener.BookingProcessStartedEventHandler;
+import com.ddd.tutio.booking.port.event.listener.BookingProcessStartedEventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

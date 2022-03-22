@@ -1,4 +1,4 @@
-package comd.ddd.tutio.booking.port.event.listener;
+package com.ddd.tutio.booking.port.event.listener;
 
 import com.ddd.tutio.booking.event.BookingProcessStarted;
 
