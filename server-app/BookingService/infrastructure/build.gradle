@@ -32,6 +32,10 @@ dependencies {
     testImplementation testLibs.bundles.spock
 }
 
+bootJar {
+    enabled = false
+}
+
 test {
     useJUnitPlatform()
 }
