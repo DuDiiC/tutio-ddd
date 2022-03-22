@@ -1,1 +1,11 @@
 spring.output.ansi.enabled: always
+spring:
+  rabbitmq:
+    username: user
+    password: password
+rabbitmq:
+  exchange:
+    events: 'tutio-events'
+  queue:
+    booking:
+      booking-process-started: 'booking-process-started-events'
