@@ -12,8 +12,34 @@ services:
       - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_management load_definitions "/opt/definitions.json"
     ports:
       # AMQP protocol port
-      - 5672:5672
+      - "5672:5672"
       # HTTP management UI
-      - 15672:15672
+      - "15672:15672"
+  postgresql_db:
+    image: postgres:latest
+    container_name: postgresql_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./config/postgres/sql/01_create_booking_schema.sql:/docker-entrypoint-initdb.d/01_create_booking_schema.sql
+      - ./config/postgres/sql/02_create_tables.sql:/docker-entrypoint-initdb.d/02_create_tables.sql
+    environment:
+      POSTGRES_DB: tutio_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+  pg_admin:
+    container_name: pg_admin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@email.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./config/postgres/servers.json:/pgadmin4/servers.json:ro
+    ports:
+      - "9000:80"
 volumes:
   rabbitmq_data:
+  postgres_data:
+  pgadmin_data:
