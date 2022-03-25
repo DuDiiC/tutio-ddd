@@ -3,6 +3,8 @@ spring:
   rabbitmq:
     username: user
     password: password
+    host: localhost
+    port: 5672
 rabbitmq:
   exchange:
     events: 'tutio-events'
