@@ -11,3 +11,12 @@ rabbitmq:
   queue:
     booking:
       booking-process-started: 'booking-process-started-events'
+      time-for-booking-expired: 'time-for-booking-expired-events'
+      plan-booking-requested: 'plan-booking-requested-events'
+      booking-planned: 'booking-planned-events'
+      booking-planning-rejected: 'booking-planning-rejected-events'
+      meeting-cost-calculated: 'meeting-cost-calculated-events'
+      booking-paid-successfully: 'booking-paid-successfully-events'
+      booking-approved: 'booking-approved-events'
+      booking-payment-failed: 'booking-payment-failed-events'
+      booking-cancelled: 'booking-cancelled-events'
