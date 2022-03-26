@@ -20,8 +20,9 @@ services:
     container_name: postgresql_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./config/postgres/sql/01_create_booking_schema.sql:/docker-entrypoint-initdb.d/01_create_booking_schema.sql
-      - ./config/postgres/sql/02_create_tables.sql:/docker-entrypoint-initdb.d/02_create_tables.sql
+      - ./config/postgres/sql/01_create_booking_schema.sql:/docker-entrypoint-initdb.d/01_create_booking_schema.sql:ro
+      - ./config/postgres/sql/02_create_tables.sql:/docker-entrypoint-initdb.d/02_create_tables.sql:ro
+      - ./config/postgres/sql/03_example_init_values.sql:/docker-entrypoint-initdb.d/03_example_init_values.sql:ro
     environment:
       POSTGRES_DB: tutio_db
       POSTGRES_USER: user
