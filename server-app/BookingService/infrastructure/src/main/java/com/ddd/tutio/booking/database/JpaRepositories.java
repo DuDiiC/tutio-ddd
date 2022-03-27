@@ -1,0 +1,33 @@
+package com.ddd.tutio.booking.database;
+
+import com.ddd.tutio.booking.Booking;
+import com.ddd.tutio.booking.BookingTemplate;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@Repository
+interface JpaBookingRepository extends JpaRepository<Booking, UUID> {
+
+    @Override
+    @Query(
+            value = "SELECT * FROM booking.bookings b WHERE b.booking_id = :id AND b.booking_status != 'TEMPLATE'",
+            nativeQuery = true
+    )
+    Optional<Booking> findById(@Param("id") UUID id);
+}
+
+@Repository
+interface JpaBookingTemplateRepository extends JpaRepository<BookingTemplate, UUID> {
+
+    @Override
+    @Query(
+            value = "SELECT * FROM booking.bookings b WHERE b.booking_id = :id AND b.booking_status = 'TEMPLATE'",
+            nativeQuery = true
+    )
+    Optional<BookingTemplate> findById(@Param("id") UUID id);
+}

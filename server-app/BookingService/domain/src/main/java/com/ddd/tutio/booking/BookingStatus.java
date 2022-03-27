@@ -1,6 +1,8 @@
 package com.ddd.tutio.booking;
 
-enum BookingStatus {
+import java.io.Serializable;
+
+public enum BookingStatus implements Serializable {
 
     PLANNED {
         @Override

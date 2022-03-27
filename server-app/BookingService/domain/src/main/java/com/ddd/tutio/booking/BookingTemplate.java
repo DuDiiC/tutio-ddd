@@ -6,12 +6,17 @@ import com.ddd.tutio.booking.event.PlanBookingRequested;
 import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
 
-class BookingTemplate implements AggregateRoot<BookingId> {
+public class BookingTemplate implements AggregateRoot<BookingId> {
 
-    private final BookingId bookingId;
-    final LessonPrice lessonPrice;
-    final PupilId pupilId;
-    final CourseId courseId;
+    private BookingId bookingId;
+    // other aggregates
+    PupilId pupilId;
+    CourseId courseId;
+
+    LessonPrice lessonPrice;
+
+    protected BookingTemplate() {
+    }
 
     public BookingTemplate(BookingId bookingId, BookingProcessStarted event) {
         this.bookingId = bookingId;
