@@ -1,17 +1,21 @@
 package com.ddd.tutio.booking;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
 
-class LessonPrice {
+class LessonPrice implements Serializable {
 
     static final Map<Currency, BigDecimal> MIN_MEETING_PRICE = Map.of(
             Currency.PLN, new BigDecimal("20.0000")
     );
 
-    final BigDecimal price;
-    final Currency currency;
+    BigDecimal price;
+    Currency currency;
+
+    protected LessonPrice() {
+    }
 
     public LessonPrice(BigDecimal price, Currency currency) {
         validate(price, currency);

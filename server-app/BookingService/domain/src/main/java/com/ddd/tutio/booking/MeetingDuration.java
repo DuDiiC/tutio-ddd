@@ -1,17 +1,21 @@
 package com.ddd.tutio.booking;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.Instant;
 
-class MeetingDuration {
+class MeetingDuration implements Serializable {
 
     private static final long MINIMUM_MEETING_DURATION_IN_MILLIS = 30 * 60 * 1000L;
     private static final long MAXIMUM_MEETING_DURATION_IN_MILLIS = 3 * 60 * 60 * 1000L;
 
-    final Instant startTime;
-    final Instant endTime;
+    Instant startTime;
+    Instant endTime;
+
+    protected MeetingDuration() {
+    }
 
     public MeetingDuration(Instant startTime, Instant endTime) {
         validate(startTime, endTime);
@@ -43,5 +47,4 @@ class MeetingDuration {
                 .plusMinutes(1)
                 .minusSeconds(1);
     }
-
 }

@@ -9,13 +9,17 @@ import java.math.RoundingMode;
 
 public class Booking implements AggregateRoot<BookingId> {
 
+    private BookingId bookingId;
     // other aggregates
-    final CourseId courseId;
-    final PupilId pupilId;
-    private final BookingId bookingId;
-    private final MeetingDuration meetingDuration;
-    private final LessonPrice lessonPrice;
+    private CourseId courseId;
+    private PupilId pupilId;
+
+    private MeetingDuration meetingDuration;
+    private LessonPrice lessonPrice;
     private BookingStatus status;
+
+    protected Booking() {
+    }
 
     Booking(BookingTemplate template, PlanBookingRequested event) {
         this.bookingId = template.getIdentifier();

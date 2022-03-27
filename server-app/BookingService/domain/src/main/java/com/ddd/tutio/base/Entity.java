@@ -1,6 +1,8 @@
 package com.ddd.tutio.base;
 
-public interface Entity<T> {
+import java.io.Serializable;
+
+public interface Entity<T> extends Serializable {
 
     T getIdentifier();
 }

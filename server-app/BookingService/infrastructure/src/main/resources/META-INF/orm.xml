@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+      http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+
+
+    <!--  BOOKING TEMPLATE AGGREGATE  -->
+    <entity class="com.ddd.tutio.booking.BookingTemplate" access="FIELD">
+        <table name="bookings" schema="booking" catalog="tutio_db"/>
+        <attributes>
+            <embedded-id name="bookingId">
+                <attribute-override name="id">
+                    <column name="booking_id" nullable="false"/>
+                </attribute-override>
+            </embedded-id>
+            <embedded name="pupilId">
+                <attribute-override name="id">
+                    <column name="pupil_id" nullable="false"/>
+                </attribute-override>
+            </embedded>
+            <embedded name="courseId">
+                <attribute-override name="id">
+                    <column name="course_id" nullable="false"/>
+                </attribute-override>
+            </embedded>
+            <embedded name="lessonPrice">
+                <attribute-override name="price">
+                    <column name="lesson_price" nullable="false"/>
+                </attribute-override>
+                <attribute-override name="currency">
+                    <column name="currency" nullable="false"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
+
+    <!--  BOOKING AGGREGATE  -->
+    <entity class="com.ddd.tutio.booking.Booking" access="FIELD">
+        <table name="bookings" schema="booking" catalog="tutio_db"/>
+        <attributes>
+            <embedded-id name="bookingId">
+                <attribute-override name="id">
+                    <column name="booking_id" nullable="false"/>
+                </attribute-override>
+            </embedded-id>
+            <basic name="status">
+                <column name="booking_status" nullable="false"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <embedded name="pupilId">
+                <attribute-override name="id">
+                    <column name="pupil_id" nullable="false"/>
+                </attribute-override>
+            </embedded>
+            <embedded name="courseId">
+                <attribute-override name="id">
+                    <column name="course_id" nullable="false"/>
+                </attribute-override>
+            </embedded>
+            <embedded name="meetingDuration">
+                <attribute-override name="startTime">
+                    <column name="meeting_start_time"/>
+                </attribute-override>
+                <attribute-override name="endTime">
+                    <column name="meeting_end_time"/>
+                </attribute-override>
+            </embedded>
+            <embedded name="lessonPrice">
+                <attribute-override name="price">
+                    <column name="lesson_price" nullable="false"/>
+                </attribute-override>
+                <attribute-override name="currency">
+                    <column name="currency" nullable="false"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
+
+
+    <!--  VALUE OBJECTS  -->
+    <embeddable class="com.ddd.tutio.booking.BookingId">
+        <attributes>
+            <basic name="id">
+                <column name="booking_id" nullable="false"/>
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="com.ddd.tutio.pupil.PupilId">
+        <attributes>
+            <basic name="id">
+                <column name="pupil_id" nullable="false"/>
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="com.ddd.tutio.course.CourseId">
+        <attributes>
+            <basic name="id">
+                <column name="course_id" nullable="false"/>
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="com.ddd.tutio.booking.MeetingDuration">
+        <attributes>
+            <basic name="startTime">
+                <column name="meeting_start_time"/>
+            </basic>
+            <basic name="endTime">
+                <column name="meeting_end_time"/>
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="com.ddd.tutio.booking.LessonPrice">
+        <attributes>
+            <basic name="price">
+                <column name="lesson_price" nullable="false"/>
+            </basic>
+            <basic name="currency">
+                <column name="currency" nullable="false"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+        </attributes>
+    </embeddable>
+
+</entity-mappings>
