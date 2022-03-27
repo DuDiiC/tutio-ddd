@@ -5,6 +5,26 @@ spring:
     password: password
     host: localhost
     port: 5672
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tutio_db
+    username: user
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        ddl-auto: none
+    open-in-view: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 rabbitmq:
   exchange:
     events: 'tutio-events'
