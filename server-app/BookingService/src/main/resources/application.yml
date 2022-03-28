@@ -31,6 +31,7 @@ rabbitmq:
   queue:
     booking:
       booking-process-started: 'booking-process-started-events'
+      booking-countdown-started: 'booking-countdown-started-events'
       time-for-booking-expired: 'time-for-booking-expired-events'
       plan-booking-requested: 'plan-booking-requested-events'
       booking-planned: 'booking-planned-events'

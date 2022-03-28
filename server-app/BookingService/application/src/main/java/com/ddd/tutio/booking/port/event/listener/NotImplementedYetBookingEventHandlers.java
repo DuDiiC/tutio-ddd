@@ -2,6 +2,14 @@ package com.ddd.tutio.booking.port.event.listener;
 
 import com.ddd.tutio.booking.event.*;
 
+interface BookingCountdownStartedEventHandler {
+
+    /**
+     * początek odliczania czasu przeznaczonego na dokonanie rezerwacji
+     */
+    void handle(BookingCountdownStarted event);
+}
+
 interface TimeForBookingExpiredEventHandler {
     /**
      * czas przeznaczony na dokonanie rezerwacji upłynął -> usuń rezerwację
