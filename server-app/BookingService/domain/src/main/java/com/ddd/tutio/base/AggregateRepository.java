@@ -1,10 +1,8 @@
 package com.ddd.tutio.base;
 
-public interface AggregateRepository<ID, Aggregate> {
+public interface AggregateRepository<ID, Aggregate> extends ReadOnlyAggregateRepository<ID, Aggregate> {
 
     ID generateNext();
-
-    Aggregate getById(ID id);
 
     void add(Aggregate aggregate);
 

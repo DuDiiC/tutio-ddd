@@ -23,6 +23,11 @@ public class PostgresBookingTemplateRepository implements BookingTemplateReposit
     }
 
     @Override
+    public boolean existsById(BookingId bookingId) {
+        return false;
+    }
+
+    @Override
     public void add(BookingTemplate bookingTemplate) {
 
     }
