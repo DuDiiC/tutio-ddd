@@ -78,6 +78,34 @@
         </attributes>
     </entity>
 
+    <!--  COURSE AGGREGATE  -->
+    <entity class="com.ddd.tutio.course.Course" access="FIELD">
+        <table name="courses" schema="booking" catalog="tutio_db"/>
+        <attributes>
+            <embedded-id name="courseId">
+                <attribute-override name="id">
+                    <column name="course_id" nullable="false"/>
+                </attribute-override>
+            </embedded-id>
+            <embedded name="tutorId">
+                <attribute-override name="id">
+                    <column name="tutor_id" nullable="false"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
+
+    <!--  PUPIL AGGREGATE  -->
+    <entity class="com.ddd.tutio.pupil.Pupil" access="FIELD">
+        <table name="pupils" schema="booking" catalog="tutio_db"/>
+        <attributes>
+            <embedded-id name="pupilId">
+                <attribute-override name="id">
+                    <column name="pupil_id" nullable="false"/>
+                </attribute-override>
+            </embedded-id>
+        </attributes>
+    </entity>
 
     <!--  VALUE OBJECTS  -->
     <embeddable class="com.ddd.tutio.booking.BookingId">

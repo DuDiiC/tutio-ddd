@@ -24,7 +24,7 @@ public class PostgresBookingRepository implements BookingRepository {
 
     @Override
     public boolean existsById(BookingId bookingId) {
-        return false;
+        return jpaBookingRepository.existsById(bookingId.id);
     }
 
     @Override

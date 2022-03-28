@@ -3,12 +3,15 @@ package com.ddd.tutio.course;
 import com.ddd.tutio.base.AggregateRoot;
 import com.ddd.tutio.tutor.TutorId;
 
-class Course implements AggregateRoot<CourseId> {
+public class Course implements AggregateRoot<CourseId> {
 
-    private final CourseId courseId;
+    private CourseId courseId;
 
     // other aggregates
-    final TutorId tutorId;
+    TutorId tutorId;
+
+    protected Course() {
+    }
 
     Course(CourseId courseId, TutorId tutorId) {
         this.courseId = courseId;

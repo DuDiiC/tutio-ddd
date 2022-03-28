@@ -29,7 +29,7 @@ public class PostgresBookingTemplateRepository implements BookingTemplateReposit
 
     @Override
     public void add(BookingTemplate bookingTemplate) {
-
+        jpaBookingTemplateRepository.save(bookingTemplate);
     }
 
     @Override
