@@ -32,13 +32,13 @@ CREATE TABLE IF NOT EXISTS booking.pupils
 CREATE TABLE IF NOT EXISTS booking.bookings
 (
     booking_id         UUID PRIMARY KEY,
-    booking_status     VARCHAR(50) NOT NULL,
+    booking_status     VARCHAR(50)                 DEFAULT 'TEMPLATE' NOT NULL,
     meeting_start_time TIMESTAMP WITHOUT TIME ZONE,
     meeting_end_time   TIMESTAMP WITHOUT TIME ZONE,
-    lesson_price       MONEY       NOT NULL,
-    currency           VARCHAR(3)  NOT NULL,
-    course_id          UUID        NOT NULL,
-    pupil_id           UUID        NOT NULL,
+    lesson_price       MONEY                                          NOT NULL,
+    currency           VARCHAR(3)                                     NOT NULL,
+    course_id          UUID                                           NOT NULL,
+    pupil_id           UUID                                           NOT NULL,
     db_create_time     TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     db_modify_time     TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 
