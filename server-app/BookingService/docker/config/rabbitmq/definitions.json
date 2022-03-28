@@ -21,6 +21,15 @@
       }
     },
     {
+      "name": "booking-countdown-started-events",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
       "name": "booking-paid-successfully-events",
       "vhost": "/",
       "durable": true,
@@ -117,6 +126,14 @@
       "destination": "booking-cancelled-events",
       "destination_type": "queue",
       "routing_key": "com.ddd.tutio.booking.event.BookingCancelled",
+      "arguments": {}
+    },
+    {
+      "source": "tutio-events",
+      "vhost": "/",
+      "destination": "booking-countdown-started-events",
+      "destination_type": "queue",
+      "routing_key": "com.ddd.tutio.booking.event.BookingCountdownStarted",
       "arguments": {}
     },
     {
