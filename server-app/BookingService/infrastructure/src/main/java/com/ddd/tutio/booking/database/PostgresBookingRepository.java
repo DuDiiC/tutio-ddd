@@ -23,6 +23,11 @@ public class PostgresBookingRepository implements BookingRepository {
     }
 
     @Override
+    public boolean existsById(BookingId bookingId) {
+        return false;
+    }
+
+    @Override
     public void add(Booking booking) {
         //TODO: IMPLEMENT
     }
