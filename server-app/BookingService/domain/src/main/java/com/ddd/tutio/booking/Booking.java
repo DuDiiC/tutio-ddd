@@ -51,6 +51,10 @@ public class Booking implements AggregateRoot<BookingId> {
         return Collections.unmodifiableList(this.events);
     }
 
+    public BookingStatus status() {
+        return status;
+    }
+
     public MeetingCost calculateBaseMeetingCost() {
         var calculatedCost = lessonPrice.price
                 .multiply(this.meetingDuration.partOfHour())
