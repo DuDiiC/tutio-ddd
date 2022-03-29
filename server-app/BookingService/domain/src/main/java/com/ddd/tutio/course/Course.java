@@ -1,7 +1,11 @@
 package com.ddd.tutio.course;
 
 import com.ddd.tutio.base.AggregateRoot;
+import com.ddd.tutio.base.DomainEvent;
 import com.ddd.tutio.tutor.TutorId;
+
+import java.util.Collections;
+import java.util.List;
 
 public class Course implements AggregateRoot<CourseId> {
 
@@ -21,5 +25,10 @@ public class Course implements AggregateRoot<CourseId> {
     @Override
     public CourseId getIdentifier() {
         return this.courseId;
+    }
+
+    @Override
+    public List<DomainEvent> events() {
+        return Collections.emptyList();
     }
 }

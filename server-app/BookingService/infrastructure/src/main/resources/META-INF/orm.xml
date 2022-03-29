@@ -33,6 +33,7 @@
                     <column name="currency" nullable="false"/>
                 </attribute-override>
             </embedded>
+            <transient name="events"/>
         </attributes>
     </entity>
 
@@ -75,6 +76,7 @@
                     <column name="currency" nullable="false"/>
                 </attribute-override>
             </embedded>
+            <transient name="events"/>
         </attributes>
     </entity>
 

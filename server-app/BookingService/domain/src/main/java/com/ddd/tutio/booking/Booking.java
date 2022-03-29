@@ -1,13 +1,22 @@
 package com.ddd.tutio.booking;
 
 import com.ddd.tutio.base.AggregateRoot;
+import com.ddd.tutio.base.DomainEvent;
+import com.ddd.tutio.booking.event.BookingPlanned;
 import com.ddd.tutio.booking.event.PlanBookingRequested;
 import com.ddd.tutio.course.CourseId;
 import com.ddd.tutio.pupil.PupilId;
 
 import java.math.RoundingMode;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 public class Booking implements AggregateRoot<BookingId> {
+
+    private List<DomainEvent> events = new ArrayList<>();
 
     private BookingId bookingId;
     // other aggregates
@@ -28,6 +37,8 @@ public class Booking implements AggregateRoot<BookingId> {
         this.meetingDuration = new MeetingDuration(event.startTime, event.endTime);
         this.lessonPrice = template.lessonPrice;
         this.status = BookingStatus.PLANNED;
+
+        events.add(new BookingPlanned(UUID.randomUUID(), Instant.now(), template.getIdentifier()));
     }
 
     @Override
@@ -35,8 +46,13 @@ public class Booking implements AggregateRoot<BookingId> {
         return this.bookingId;
     }
 
+    @Override
+    public List<DomainEvent> events() {
+        return Collections.unmodifiableList(this.events);
+    }
+
     public BookingStatus status() {
-        return this.status;
+        return status;
     }
 
     public MeetingCost calculateBaseMeetingCost() {
