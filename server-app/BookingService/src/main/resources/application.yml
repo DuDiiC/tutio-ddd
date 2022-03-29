@@ -1,5 +1,6 @@
 server.error.include-message: always
 spring:
+  main.banner-mode: off
   output.ansi.enabled: always
   rabbitmq:
     username: user
