@@ -16,11 +16,11 @@ public class PostgresPupilRepository implements PupilRepository {
 
     @Override
     public Pupil getById(PupilId pupilId) {
-        return jpaPupilRepository.getById(pupilId.id);
+        return jpaPupilRepository.getById(pupilId);
     }
 
     @Override
     public boolean existsById(PupilId pupilId) {
-        return jpaPupilRepository.existsById(pupilId.id);
+        return jpaPupilRepository.existsById(pupilId);
     }
 }

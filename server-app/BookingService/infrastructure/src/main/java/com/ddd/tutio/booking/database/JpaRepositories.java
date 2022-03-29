@@ -1,6 +1,7 @@
 package com.ddd.tutio.booking.database;
 
 import com.ddd.tutio.booking.Booking;
+import com.ddd.tutio.booking.BookingId;
 import com.ddd.tutio.booking.BookingTemplate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,9 +12,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-interface JpaBookingRepository extends JpaRepository<Booking, UUID> {
+interface JpaBookingRepository extends JpaRepository<Booking, BookingId> {
 
-    @Override
     @Query(
             value = "SELECT * FROM booking.bookings b WHERE b.booking_id = :id AND b.booking_status != 'TEMPLATE'",
             nativeQuery = true
@@ -22,9 +22,8 @@ interface JpaBookingRepository extends JpaRepository<Booking, UUID> {
 }
 
 @Repository
-interface JpaBookingTemplateRepository extends JpaRepository<BookingTemplate, UUID> {
+interface JpaBookingTemplateRepository extends JpaRepository<BookingTemplate, BookingId> {
 
-    @Override
     @Query(
             value = "SELECT * FROM booking.bookings b WHERE b.booking_id = :id AND b.booking_status = 'TEMPLATE'",
             nativeQuery = true
