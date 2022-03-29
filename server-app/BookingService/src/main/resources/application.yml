@@ -1,5 +1,6 @@
-spring.output.ansi.enabled: always
+server.error.include-message: always
 spring:
+  output.ansi.enabled: always
   rabbitmq:
     username: user
     password: password
