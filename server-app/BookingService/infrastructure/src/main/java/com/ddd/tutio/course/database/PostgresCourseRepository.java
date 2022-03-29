@@ -18,12 +18,12 @@ public class PostgresCourseRepository implements CourseRepository {
 
     @Override
     public Course getById(CourseId courseId) {
-        return jpaCourseRepository.findById(courseId.id)
+        return jpaCourseRepository.findById(courseId)
                 .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
     public boolean existsById(CourseId courseId) {
-        return jpaCourseRepository.existsById(courseId.id);
+        return jpaCourseRepository.existsById(courseId);
     }
 }
