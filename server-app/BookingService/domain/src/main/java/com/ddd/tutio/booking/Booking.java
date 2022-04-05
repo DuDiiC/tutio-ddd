@@ -2,6 +2,7 @@ package com.ddd.tutio.booking;
 
 import com.ddd.tutio.base.AggregateRoot;
 import com.ddd.tutio.base.DomainEvent;
+import com.ddd.tutio.booking.event.BookingCancelled;
 import com.ddd.tutio.booking.event.BookingPlanned;
 import com.ddd.tutio.booking.event.PlanBookingRequested;
 import com.ddd.tutio.course.CourseId;
@@ -63,25 +64,24 @@ public class Booking implements AggregateRoot<BookingId> {
     }
 
     public void approve() {
-        // TODO - publish event
         if (this.status.canBeApproved()) {
             this.status = BookingStatus.APPROVED;
+            events.add(new BookingPlanned(UUID.randomUUID(), Instant.now(), this.bookingId));
         } else {
             throw new UnsupportedOperationException();
         }
     }
 
-    public void cancel() {
-        // TODO - publish event
+    public void cancel(String reason) {
         if (this.status.canBeCancelled()) {
             this.status = BookingStatus.CANCELED;
+            events.add(new BookingCancelled(UUID.randomUUID(), Instant.now(), this.bookingId, reason));
         } else {
             throw new UnsupportedOperationException();
         }
     }
 
-    public void accept() {
-        // TODO - publish event
+    public void accept() { // not implemented yet
         if (this.status.canBeAccepted()) {
             this.status = BookingStatus.ACCEPTED;
         } else {
