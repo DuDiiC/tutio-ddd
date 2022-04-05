@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Objects;
 
 class MeetingDuration implements Serializable {
 
@@ -46,5 +47,18 @@ class MeetingDuration implements Serializable {
         return Duration.between(this.startTime, this.endTime)
                 .plusMinutes(1)
                 .minusSeconds(1);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MeetingDuration that = (MeetingDuration) o;
+        return startTime.equals(that.startTime) && endTime.equals(that.endTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startTime, endTime);
     }
 }
