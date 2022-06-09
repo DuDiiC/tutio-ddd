@@ -21,7 +21,7 @@ public enum BookingStatus implements Serializable {
         }
     },
 
-    APPROVED{
+    APPROVED {
         @Override
         boolean canBeApproved() {
             return false;
@@ -38,7 +38,7 @@ public enum BookingStatus implements Serializable {
         }
     },
 
-    CANCELED{
+    CANCELED {
         @Override
         boolean canBeApproved() {
             return false;

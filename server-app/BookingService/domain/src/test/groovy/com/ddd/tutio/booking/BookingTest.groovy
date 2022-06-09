@@ -7,8 +7,9 @@ import java.time.Instant
 
 class BookingTest extends Specification implements TestBookingFactory {
 
-    def "Calculate meeting cost correctly"(String startTime, Long duration, String lessonPrice, String resultAmount) {
-
+    def "Calculate base meeting cost correctly"(
+            String startTime, Long duration, String lessonPrice, String resultAmount
+    ) {
         given: "Booking aggregate instance"
         def booking = getInstance(Instant.parse(startTime), Duration.ofMinutes(duration), new BigDecimal(lessonPrice))
 
@@ -27,8 +28,7 @@ class BookingTest extends Specification implements TestBookingFactory {
         "2022-01-10T10:00:00.00Z" | 70L      | "50.00"     || "58.34"
     }
 
-    def "Change status: PLANNED -> APPROVED"() {
-
+    def "Change status correctly: PLANNED -> APPROVED"() {
         given: "Booking aggregate instance"
         def booking = getSimpleInstance()
 
@@ -38,67 +38,22 @@ class BookingTest extends Specification implements TestBookingFactory {
         then: "Approve booking"
         noExceptionThrown()
         booking.status() == BookingStatus.APPROVED
-
-        when: "Try to approve approved booking"
-        booking.approve()
-
-        then: "Throw exception"
-        thrown(UnsupportedOperationException.class)
     }
 
-    def "Throw exception when try to approve approved booking"() {
-
-        given: "Booking aggregate instance"
-        def booking = getSimpleInstance()
-        booking.approve()
-
-        when: "Approve approved booking"
-        booking.approve()
-
-        then: "Throw exception"
-        thrown(UnsupportedOperationException.class)
-    }
-
-    def "Throw exception when try to approve canceled booking"() {
-
-        given: "Booking aggregate instance"
-        def booking = getSimpleInstance()
-        booking.cancel()
-
-        when: "Approve canceled booking"
-        booking.approve()
-
-        then: "Throw exception"
-        thrown(UnsupportedOperationException.class)
-    }
-
-    def "Status change: PLANNED -> CANCELED"() {
+    def "Change status correctly: PLANNED -> CANCELED"() {
 
         given: "Booking aggregate instance"
         def booking = getSimpleInstance()
 
         when: "Try to cancel booking"
-        booking.cancel()
+        booking.cancel("")
 
         then: "Cancel booking"
         noExceptionThrown()
         booking.status() == BookingStatus.CANCELED
     }
 
-    def "Throw exception when try to cancel approved booking"() {
-
-        given: "Booking aggregate instance"
-        def booking = getSimpleInstance()
-        booking.approve()
-
-        when: "Try to cancel canceled booking"
-        booking.cancel()
-
-        then: "Throw exception"
-        thrown(UnsupportedOperationException.class)
-    }
-
-    def "Change status: APPROVED -> ACCEPTED"() {
+    def "Change status correctly: APPROVED -> ACCEPTED"() {
 
         given: "Booking aggregate instance"
         def booking = getSimpleInstance()
@@ -110,6 +65,45 @@ class BookingTest extends Specification implements TestBookingFactory {
         then: "Accept booking"
         noExceptionThrown()
         booking.status() == BookingStatus.ACCEPTED
+    }
+
+    def "Throw exception when try to approve approved booking"() {
+
+        given: "Booking aggregate instance"
+        def booking = getSimpleInstance()
+        booking.approve()
+
+        when: "Try to approve approved booking"
+        booking.approve()
+
+        then: "Throw exception"
+        thrown(UnsupportedOperationException.class)
+    }
+
+    def "Throw exception when try to approve canceled booking"() {
+
+        given: "Booking aggregate instance"
+        def booking = getSimpleInstance()
+        booking.cancel("")
+
+        when: "Approve canceled booking"
+        booking.approve()
+
+        then: "Throw exception"
+        thrown(UnsupportedOperationException.class)
+    }
+
+    def "Throw exception when try to cancel approved booking"() {
+
+        given: "Booking aggregate instance"
+        def booking = getSimpleInstance()
+        booking.approve()
+
+        when: "Try to cancel canceled booking"
+        booking.cancel("")
+
+        then: "Throw exception"
+        thrown(UnsupportedOperationException.class)
     }
 
     def "Throw exception when try to accept planned booking"() {
@@ -128,7 +122,7 @@ class BookingTest extends Specification implements TestBookingFactory {
 
         given: "Booking aggregate instance"
         def booking = getSimpleInstance()
-        booking.cancel()
+        booking.cancel("")
 
         when: "Try to accept canceled booking"
         booking.accept()
