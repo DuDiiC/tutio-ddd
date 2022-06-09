@@ -57,7 +57,7 @@ public class Booking implements AggregateRoot<BookingId> {
     }
 
     public MeetingCost calculateBaseMeetingCost() {
-        var calculatedCost = lessonPrice.price
+        var calculatedCost = this.lessonPrice.price
                 .multiply(this.meetingDuration.partOfHour())
                 .setScale(2, RoundingMode.HALF_UP);
         return new MeetingCost(calculatedCost, this.lessonPrice.currency);

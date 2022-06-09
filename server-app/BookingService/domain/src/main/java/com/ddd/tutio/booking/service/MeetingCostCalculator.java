@@ -20,7 +20,9 @@ class MeetingCostCalculator {
         return baseCost.withDiscount(combinedDiscount.max(maxNonCombinedDiscount));
     }
 
-    private BigDecimal calculateMaxNonCombinedDiscountValue(List<Discount> discounts, Map<Discount, BigDecimal> discountValues) {
+    private BigDecimal calculateMaxNonCombinedDiscountValue(
+            List<Discount> discounts, Map<Discount, BigDecimal> discountValues
+    ) {
         return discounts.stream()
                 .filter(discount -> !discount.discountCombinesWithOthers())
                 .map(discountValues::get)
@@ -28,7 +30,9 @@ class MeetingCostCalculator {
                 .orElse(BigDecimal.ZERO);
     }
 
-    private Map<Discount, BigDecimal> calculateDiscounts(MeetingCost calculatedCost, List<Discount> discounts) {
+    private Map<Discount, BigDecimal> calculateDiscounts(
+            MeetingCost calculatedCost, List<Discount> discounts
+    ) {
         return discounts.stream()
                 .collect(Collectors.toMap(
                         Function.identity(),
@@ -36,7 +40,9 @@ class MeetingCostCalculator {
                 ));
     }
 
-    private BigDecimal calculateCombinedDiscountsValue(List<Discount> discounts, Map<Discount, BigDecimal> discountValues) {
+    private BigDecimal calculateCombinedDiscountsValue(
+            List<Discount> discounts, Map<Discount, BigDecimal> discountValues
+    ) {
         return discounts.stream()
                 .filter(Discount::discountCombinesWithOthers)
                 .map(discountValues::get)
