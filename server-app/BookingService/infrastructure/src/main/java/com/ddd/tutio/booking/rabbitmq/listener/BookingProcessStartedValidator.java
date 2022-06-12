@@ -5,6 +5,10 @@ import com.ddd.tutio.course.CourseRepository;
 import com.ddd.tutio.pupil.PupilRepository;
 import org.springframework.stereotype.Component;
 
+/**
+ * Walidator subskrybowanego zdarzenia domenowego rozpoczęcia procesu rezerwacji.
+ * Weryfikuje, czy istnieją kurs i uczeń wymienieni w zdarzeniu.
+ */
 @Component
 class BookingProcessStartedValidator {
 

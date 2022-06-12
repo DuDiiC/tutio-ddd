@@ -14,15 +14,32 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Agregat szablonu rezerwacji. Powstaje w momencie rozpoczęcia przez ucznia procesu rezerwacji i nadania jej unikalnego identyfikatora jeszcze przed
+ * zaplanowaniem.
+ */
 public class BookingTemplate implements AggregateRoot<BookingId> {
 
     private List<DomainEvent> events = new ArrayList<>();
 
+    /**
+     * Identyfikator rezerwacji.
+     */
     private BookingId bookingId;
-    // other aggregates
-    PupilId pupilId;
+
+    /**
+     * Identyfikator kursu związanego z rezerwacją.
+     */
     CourseId courseId;
 
+    /**
+     * Indentyfikator ucznia dokonującego rezerwacji.
+     */
+    PupilId pupilId;
+
+    /**
+     * Cena lekcji w ramach rezerwacji.
+     */
     LessonPrice lessonPrice;
 
     protected BookingTemplate() {
@@ -47,6 +64,10 @@ public class BookingTemplate implements AggregateRoot<BookingId> {
         return Collections.unmodifiableList(this.events);
     }
 
+    /**
+     * Na podstawie szablonu rezerwacji tworzy planowaną rezerwację {@link Booking}
+     * @param event zdarzenie domenowe planowania rezerwacji
+     */
     public Booking toBooking(PlanBookingRequested event) {
         return new Booking(this, event);
     }

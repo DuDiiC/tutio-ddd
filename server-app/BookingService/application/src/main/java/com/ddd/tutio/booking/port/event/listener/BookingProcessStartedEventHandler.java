@@ -2,6 +2,9 @@ package com.ddd.tutio.booking.port.event.listener;
 
 import com.ddd.tutio.booking.event.BookingProcessStarted;
 
+/**
+ * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingProcessStarted}.
+ */
 public interface BookingProcessStartedEventHandler {
 
     /**

@@ -2,73 +2,109 @@ package com.ddd.tutio.booking.port.event.listener;
 
 import com.ddd.tutio.booking.event.*;
 
-interface BookingCountdownStartedEventHandler {
+/**
+ * Klasa przechowująca definicje interfejsów przechwytujących zdarzenia domenowe, których zakres funkcjonalności został określony,
+ * jednak nie zostały jeszcze zaimplementowane.
+ */
+abstract class NoImplementedYetBookingEventHandlers {
+    /**
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingCountdownStarted}.
+     */
+    private interface BookingCountdownStartedEventHandler {
+
+        /**
+         * początek odliczania czasu przeznaczonego na dokonanie rezerwacji
+         */
+        void handle(BookingCountdownStarted event);
+    }
 
     /**
-     * początek odliczania czasu przeznaczonego na dokonanie rezerwacji
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link TimeForBookingExpired}.
      */
-    void handle(BookingCountdownStarted event);
-}
+    private interface TimeForBookingExpiredEventHandler {
+        /**
+         * czas przeznaczony na dokonanie rezerwacji upłynął -> usuń rezerwację
+         */
+        void handle(TimeForBookingExpired event);
+    }
 
-interface TimeForBookingExpiredEventHandler {
     /**
-     * czas przeznaczony na dokonanie rezerwacji upłynął -> usuń rezerwację
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link PlanBookingRequested}.
      */
-    void handle(TimeForBookingExpired event);
-}
+    private interface PlanBookingRequestedEventHandler {
+        /**
+         * zlecono rezerwację w wybranym terminie -> spróbuj utworzyć planowaną rezerwację
+         */
+        void handle(PlanBookingRequested event);
+    }
 
-interface PlanBookingRequestedEventHandler {
     /**
-     * zlecono rezerwację w wybranym terminie -> spróbuj utworzyć planowaną rezerwację
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingPlanned}.
      */
-    void handle(PlanBookingRequested event);
-}
+    private interface BookingPlannedEventHandler {
+        /**
+         * pomyślnie zaplanowano rezerwację -> oblicz koszt spotkania
+         */
+        void handle(BookingPlanned event);
+    }
 
-interface BookingPlannedEventHandler {
     /**
-     * pomyślnie zaplanowano rezerwację -> oblicz koszt spotkania
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingPlanningRejected}.
      */
-    void handle(BookingPlanned event);
-}
+    private interface BookingRejectedEventHandler {
+        /**
+         * odmówiono zaplanowania rezerwacji -> usuń rezerwację
+         */
+        void handle(BookingPlanningRejected event);
+    }
 
-interface BookingRejectedEventHandler {
     /**
-     * odmówiono zaplanowania rezerwacji -> usuń rezerwację
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link MeetingCostCalculated}.
      */
-    void handle(BookingPlanningRejected event);
-}
+    private interface MeetingCostCalculatedEventHandler {
+        /**
+         * obliczono koszt spotkania -> zleć pobranie opłaty od ucznia
+         */
+        void handle(MeetingCostCalculated event);
+    }
 
-interface MeetingCostCalculatedEventHandler {
     /**
-     * obliczono koszt spotkania -> zleć pobranie opłaty od ucznia
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingPaidSuccessfully}.
      */
-    void handle(MeetingCostCalculated event);
-}
+    private interface BookingPaidSuccessfullyEventHandler {
+        /**
+         * opłacono rezerwację (z kontekstu PLATNOŚCI) -> zatwierdź rezerwację
+         */
+        void handle(BookingPaidSuccessfully event);
+    }
 
-interface BookingPaidSuccessfullyEventHandler {
     /**
-     * opłacono rezerwację (z kontekstu PLATNOŚCI) -> zatwierdź rezerwację
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingApproved}.
      */
-    void handle(BookingPaidSuccessfully event);
-}
+    private interface BookingApprovedEventHandler {
+        /**
+         * zatwierdzono rezerwację -> powiadom nauczyciela i ucznia, rozpocznij naliczanie czasu do akceptacji przez nauczyciela
+         */
+        void handle(BookingApproved event);
+    }
 
-interface BookingApprovedEventHandler {
     /**
-     * zatwierdzono rezerwację -> powiadom nauczyciela i ucznia, rozpocznij naliczanie czasu do akceptacji przez nauczyciela
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingPaymentFailed}.
      */
-    void handle(BookingApproved event);
-}
+    private interface BookingPaymentFailedEventHandler {
+        /**
+         * nieudana operacja opłacenia rezerwacji (z kontekstu PLATNOŚCI) -> anuluj rezerwację
+         */
+        void handle(BookingPaymentFailed event);
+    }
 
-interface BookingPaymentFailedEventHandler {
     /**
-     * nieudana operacja opłacenia rezerwacji (z kontekstu PLATNOŚCI) -> anuluj rezerwację
+     * Interfejs zapewniający przechwytywanie zdarzenia domenowego {@link BookingCancelled}.
      */
-    void handle(BookingPaymentFailed event);
-}
-
-interface BookingCancelledEventHandler {
-    /**
-     * anulowano rezerwację -> powiadom ucznia o anulowaniu rezerwacji i powodzie anulowania
-     */
-    void handle(BookingCancelled event);
+    private interface BookingCancelledEventHandler {
+        /**
+         * anulowano rezerwację -> powiadom ucznia o anulowaniu rezerwacji i powodzie anulowania
+         */
+        void handle(BookingCancelled event);
+    }
 }

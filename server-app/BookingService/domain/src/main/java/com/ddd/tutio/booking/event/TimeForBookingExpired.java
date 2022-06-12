@@ -6,6 +6,9 @@ import com.ddd.tutio.booking.BookingId;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * <b>Zdarzenie domenowe</b> informujące o upłynięciu czasu przeznaczonego na dokonanie rezerwacji.
+ */
 public class TimeForBookingExpired extends DomainEvent {
 
     public final BookingId bookingId;

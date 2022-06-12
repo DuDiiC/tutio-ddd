@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Obiekt wartości reprezentujący unikalny identyfikator rezerwacji {@link BookingTemplate}/{@link Booking}.
+ */
 public class BookingId implements Serializable {
 
     public UUID id;

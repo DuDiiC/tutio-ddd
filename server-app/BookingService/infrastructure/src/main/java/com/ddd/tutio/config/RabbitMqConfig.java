@@ -7,6 +7,9 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Klasa konfiguracyjna połączenia z systemem kolejkowym RabbitMQ.
+ */
 @Configuration
 public class RabbitMqConfig {
 
