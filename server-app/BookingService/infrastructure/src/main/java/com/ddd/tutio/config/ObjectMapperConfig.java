@@ -8,6 +8,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Klasa konfiguracyjna {@link ObjectMapper}a odpowiedzialnego za serializację i deserializację obiektów JSON do obiektów javowych.
+ */
 @Configuration
 public class ObjectMapperConfig {
 

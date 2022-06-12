@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Obiekt wartości identyfikatora ucznia.
+ */
 public class PupilId implements Serializable {
 
     public UUID id;
