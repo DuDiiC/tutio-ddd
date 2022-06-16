@@ -1,204 +1,242 @@
 {
-  "exchanges": [
-    {
-      "name": "tutio-events",
-      "vhost": "/",
-      "type": "direct",
-      "durable": true,
-      "auto_delete": false,
-      "internal": false,
-      "arguments": {}
-    }
-  ],
-  "queues": [
-    {
-      "name": "booking-approved-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-countdown-started-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-paid-successfully-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-payment-failed-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "plan-booking-requested-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-planned-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "time-for-booking-expired-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-process-started-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-planning-rejected-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "meeting-cost-calculated-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    },
-    {
-      "name": "booking-cancelled-events",
-      "vhost": "/",
-      "durable": true,
-      "auto_delete": false,
-      "arguments": {
-        "x-queue-type": "classic"
-      }
-    }
-  ],
-  "bindings": [
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-approved-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingApproved",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-cancelled-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingCancelled",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-countdown-started-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingCountdownStarted",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-paid-successfully-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingPaidSuccessfully",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-payment-failed-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingPaymentFailed",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-planned-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingPlanned",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-planning-rejected-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingPlanningRejected",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "booking-process-started-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.BookingProcessStarted",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "meeting-cost-calculated-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.MeetingCostCalculated",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "plan-booking-requested-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.PlanBookingRequested",
-      "arguments": {}
-    },
-    {
-      "source": "tutio-events",
-      "vhost": "/",
-      "destination": "time-for-booking-expired-events",
-      "destination_type": "queue",
-      "routing_key": "com.ddd.tutio.booking.event.TimeForBookingExpired",
-      "arguments": {}
-    }
-  ]
+    "rabbit_version": "3.9.13",
+    "rabbitmq_version": "3.9.13",
+    "product_name": "RabbitMQ",
+    "product_version": "3.9.13",
+    "users": [
+        {
+            "name": "user",
+            "password_hash": "CD1veygIR1j4lote2gjx5GSn5PQZ3BkUgJ39RMbF+LIlRCfB",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": [
+                "administrator"
+            ],
+            "limits": {}
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "user",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "topic_permissions": [],
+    "parameters": [],
+    "global_parameters": [
+        {
+            "name": "internal_cluster_id",
+            "value": "rabbitmq-cluster-id-rIcdaNgZHQyr1hxHuDcq-A"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "name": "booking-planning-rejected-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-approved-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-payment-failed-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-countdown-started-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "time-for-booking-expired-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-cancelled-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "meeting-cost-calculated-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-paid-successfully-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-process-started-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "plan-booking-requested-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "booking-planned-events",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "tutio-events",
+            "vhost": "/",
+            "type": "direct",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-approved-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingApproved",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-cancelled-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingCancelled",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-countdown-started-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingCountdownStarted",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-paid-successfully-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingPaidSuccessfully",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-payment-failed-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingPaymentFailed",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-planned-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingPlanned",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-planning-rejected-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingPlanningRejected",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "booking-process-started-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.BookingProcessStarted",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "meeting-cost-calculated-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.MeetingCostCalculated",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "plan-booking-requested-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.PlanBookingRequested",
+            "arguments": {}
+        },
+        {
+            "source": "tutio-events",
+            "vhost": "/",
+            "destination": "time-for-booking-expired-events",
+            "destination_type": "queue",
+            "routing_key": "com.ddd.tutio.booking.event.TimeForBookingExpired",
+            "arguments": {}
+        }
+    ]
 }
