@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS booking.bookings
     booking_status     VARCHAR(50)                 DEFAULT 'TEMPLATE' NOT NULL,
     meeting_start_time TIMESTAMP WITHOUT TIME ZONE,
     meeting_end_time   TIMESTAMP WITHOUT TIME ZONE,
-    lesson_price       MONEY                                          NOT NULL,
+    lesson_price       NUMERIC                                        NOT NULL,
     currency           VARCHAR(3)                                     NOT NULL,
     course_id          UUID                                           NOT NULL,
     pupil_id           UUID                                           NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS booking.meetings
 (
     meeting_id         UUID PRIMARY KEY,
     meeting_status     VARCHAR(50)                 NOT NULL,
-    meeting_cost       MONEY                       NOT NULL,
+    meeting_cost       NUMERIC                     NOT NULL,
     meeting_start_time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     meeting_end_time   TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     currency           VARCHAR(3)                  NOT NULL,
