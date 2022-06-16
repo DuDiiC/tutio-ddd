@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.ddd.tutio.base"},{"l":"com.ddd.tutio.booking"},{"l":"com.ddd.tutio.booking.event"},{"l":"com.ddd.tutio.course"},{"l":"com.ddd.tutio.discount"},{"l":"com.ddd.tutio.pupil"},{"l":"com.ddd.tutio.tutor"}];updateSearchResults();
