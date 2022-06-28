@@ -12,9 +12,6 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
-/**
- * Subskrybent zdarzenia domenowego rozpoczęcia procesu rezerwacji dla RabbitMQ.
- */
 @Component
 public class RabbitBookingProcessStartedEventHandler implements BookingProcessStartedEventHandler {
 

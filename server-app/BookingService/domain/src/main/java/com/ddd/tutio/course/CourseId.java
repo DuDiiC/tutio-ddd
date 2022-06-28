@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-/**
- * Obiekt wartości identyfikatora kursu.
- */
 public class CourseId implements Serializable {
 
     public UUID id;

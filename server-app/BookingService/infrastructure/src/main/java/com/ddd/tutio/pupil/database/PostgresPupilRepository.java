@@ -5,9 +5,6 @@ import com.ddd.tutio.pupil.PupilId;
 import com.ddd.tutio.pupil.PupilRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * Implementacja repozytorium dla ucznia, korzystająca ze springowego repozytorium dla bazy danych PostgreSQL.
- */
 @Repository
 public class PostgresPupilRepository implements PupilRepository {
 

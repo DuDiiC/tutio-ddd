@@ -1,7 +1,0 @@
-com.ddd.tutio.booking.database
-com.ddd.tutio.booking.rabbitmq.listener
-com.ddd.tutio.booking.rabbitmq.producer
-com.ddd.tutio.booking.rest
-com.ddd.tutio.config
-com.ddd.tutio.course.database
-com.ddd.tutio.pupil.database

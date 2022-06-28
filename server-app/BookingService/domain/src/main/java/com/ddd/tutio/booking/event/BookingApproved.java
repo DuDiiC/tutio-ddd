@@ -6,9 +6,6 @@ import com.ddd.tutio.booking.BookingId;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * <b>Zdarzenie domenowe</b> zatwierdzenia rezerwacji.
- */
 public class BookingApproved extends DomainEvent {
 
     public final BookingId bookingId;

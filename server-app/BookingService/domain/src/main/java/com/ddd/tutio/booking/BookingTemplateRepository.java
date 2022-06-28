@@ -4,9 +4,6 @@ import com.ddd.tutio.base.AggregateRepository;
 
 import java.util.UUID;
 
-/**
- * Implementacja wzorca taktycznego <b>repozytorium</b> dla agregatu szablonu rezerwacji {@link BookingTemplate}.
- */
 public interface BookingTemplateRepository extends AggregateRepository<BookingId, BookingTemplate> {
 
     @Override

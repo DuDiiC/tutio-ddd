@@ -8,9 +8,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/**
- * Producent zdarzeń domenowych w kontekście REZERWACJA dla RabbitMQ.
- */
 @Component
 public class RabbitEventsProducer implements BookingEventsProducer {
 

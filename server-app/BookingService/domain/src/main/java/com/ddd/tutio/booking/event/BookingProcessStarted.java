@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * <b>Zdarzenie domenowe</b> rozpoczęcia procesu rezerwacji.
- */
 public class BookingProcessStarted extends DomainEvent {
 
     public final CourseId courseId;

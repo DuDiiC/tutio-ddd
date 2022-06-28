@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * Springowe repozytorium rezerwacji.
- */
 @Repository
 interface JpaBookingRepository extends JpaRepository<Booking, BookingId> {
 
@@ -24,9 +21,6 @@ interface JpaBookingRepository extends JpaRepository<Booking, BookingId> {
     Optional<Booking> findById(@Param("id") UUID id);
 }
 
-/**
- * Springowe repozytorium szablonu rezerwacji.
- */
 @Repository
 interface JpaBookingTemplateRepository extends JpaRepository<BookingTemplate, BookingId> {
 

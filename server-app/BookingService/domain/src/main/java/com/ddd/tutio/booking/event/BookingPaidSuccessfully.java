@@ -6,9 +6,6 @@ import com.ddd.tutio.booking.BookingId;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * <b>Zdarzenie domenowe</b> pomyślnego opłacenia rezerwacji.
- */
 public class BookingPaidSuccessfully extends DomainEvent {
 
     public final BookingId bookingId;

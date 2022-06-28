@@ -7,19 +7,10 @@ import com.ddd.tutio.tutor.TutorId;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * <b>Agregat</b> kursu powiązanego z rezerwacją.
- */
 public class Course implements AggregateRoot<CourseId> {
 
-    /**
-     * Identyfikator kursu.
-     */
     private CourseId courseId;
 
-    /**
-     * Identyfikator nauczyciela, do którego należy kurs.
-     */
     TutorId tutorId;
 
     protected Course() {
