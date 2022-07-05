@@ -1,13 +1,17 @@
+# Online learning platform Tutio - Event Storming
+
+The catalog contains the results of the Event Storming sessions in the form of graphics in the `.pdf` format.
+
 # Platforma nauczania online Tutio - Event Storming
 
 Katalog zawiera efekty przeprowadzonych sesji Event Stormingu, w postaci makiet w formacie `.pdf`.
 
-Poszczególne katalogi zawierają odpowiednio:
+The individual catalogs contain, respectively:
 
-- `/BPES` - Big Picture Event Storming, realizowany dla całej platformy Tutio,
-- `/PLES` - Process Level Event Storming, realizowany dla kontekstu ograniczonego *REZERWCAJA*,
-- `/DLES` - Design Level Event Storming, realizowany dla kontekstu ograniczonego *REZERWACJA*.
+- `/BPES` - Big Picture Event Storming, for the entire Tutio platform,
+- `/PLES` - Process Level Event Storming, for the **BOOKING** bounded context,
+- `/DLES` - Design Level Event Storming, for the **BOOKING** bounded context.
 
-> *Wszystkie pliki przygotowane zostały przy użyciu narzędzia [Miro](https://miro.com/index/).*
+> *All files were prepared using the [Miro](https://miro.com/index/) tool.*
 >
-> Wszystkie pliki zawierają grafiki **wektorowe**.
+> All files contain **vector** graphics.

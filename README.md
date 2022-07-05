@@ -1,13 +1,13 @@
-# Platforma nauczania online Tutio
+# Online learning platform Tutio
 
-Niniejsze repozytorium stanowi zawartość części praktycznej pracy magisterskiej o tytule *Projektowanie systemów informatycznych w podejściu Domain-Driven Deisgn*.
+This repository is the content of the practical part of the master's thesis *Designing IT systems in the Domain-Driven Design approach*.
 
-Na potrzeby pracy powstał projekt architektury oraz fragment implementacji jednego z mikroserwisów platformy nauczania online Tutio.
+For the thesis, an architecture design was created and a fragment of one of the microservices (connected with the booking process) of the Tutio online learning platform was implemented.
 
-## Zawartość repozytorium projektu
+## Project repository content
 
-Niniejsze repozytorium zawiera trzy główne katalogi:
+This repository contains three main dictionaries:
 
-- [`\event-storming`](/event-storming) - przechowuje makiety stworzone podczas sesji Event Stormingu, użytego do zdefiniowania funkcjonalności platformy, języka wszechobecnego i podziału na konteksty ograniczone;
-- [`\c4-model`](/c4-model) - przechowuje przygotowane z użyciem Structurizr diagramy C4 platformy Tutio;
-- [`\server-app\BookingService`](/server-app/BookingService) - zawiera implementację reprezentatywnego fragmentu mikroserwisu *REZERWACJA*, przygotowanego zgodnie z wytycznymi DDD.
+- [`\event-storming`](/event-storming) - stores the rendered graphics created during the Event Storming session, used to define the functionality of the platform, the ubiquitous language and the division into bounded contexts;
+- [`\c4-model`](/c4-model) - stores Tutio C4 diagrams prepared with Structurizr;
+- [`\server-app\BookingService`](/server-app/BookingService) - includes the implementation of a representative part of the *RESERVATION* microservice, prepared following the DDD guidelines.

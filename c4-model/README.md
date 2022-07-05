@@ -1,31 +1,31 @@
-# Platforma nauczania online Tutio - diagramy architektury w modelu C4
+# Online learning platform Tutio - architecture diagrams in the C4 model
 
-Katalog zawiera diagramy architektury, stworzone w [modelu C4](https://c4model.com/), z użyciem narzędzia [Structurizr](https://structurizr.com/), w [skryptowym języku DSL](https://github.com/structurizr/dsl).
+The catalog contains architecture diagrams, created in the [C4 model](https://c4model.com/, using the [Structurizr](https://structurizr.com/) tool, in a [DSL scripting language](https:/github.com/structurizr/dsl).
 
-Projekt zawiera 5 diagramów:
+The project includes 5 diagrams:
 
-- C1 - diagram kontekstu całej platformy Tutio,
-- C2 - diagram kontenerów całej platformy Tutio,
-- C3 - diagram komponentów aplikacji serwerowej platformy,
-- C3 - diagram komponentów aplikacji klienckich platformy,
-- C3 - diagram komponentów aplikacji administracyjnych platformy.
+- C1 - context diagram of the entire Tutio platform,
+- C2 - container diagram of the entire Tutio platform,
+- C3 - diagram of the platform's server application components,
+- C3 - diagram of the platform's client application components,
+- C3 - diagram of the platform's administration application components.
 
-Wszystkie wyżej wymienione diagramy, znajdują się w katalogu [`/exported`](/exported), jako grafiki wektorowe w formacie `.pdf`.
+All the above-mentioned diagrams are located in the [`/exported`](exported/) directory, as vector graphics in `.pdf` format.
 
-## Uruchomienie
+## Creation and launch of a container
 
-Dzięki udostępnionemu obrazowi dockerowemu narzędzie Structurizr Lite, możliwe jest uruchomienie Structurizr lokalnie, w kontenerze dockerowym. Bazując na [artykule](https://dev.to/simonbrown/getting-started-with-structurizr-lite-27d0):
+Thanks to the shared Docker image of the Structurizr Lite tool, it is possible to run Structurizr locally, as a Docker container. Based on the [article](https://dev.to/simonbrown/getting-started-with-structurizr-lite-27d0):
 
-1. Pobranie obrazu dockerowego:
+1. Downloading the Docker image:
 
 ```bash
 docker pull structurizr/lite
 ```
 
-2. Stworzenie i uruchomienie kontenera w katalogu projektu `/c4-model`:
+2. Creating and launching a container in the project directory `/c4-model`:
 
 ```bash
 docker run -d -p 8080:8080 -v REPO_PATH:/usr/local/structurizr --name CONTAINER_NAME structurizr/lite
 ```
 
-Dostęp do narzędzia odbywa się przez przeglądarkę internetową, pod adresem http://localhost:8080.
+The tool is accessed via a web browser at http://localhost:8080.
