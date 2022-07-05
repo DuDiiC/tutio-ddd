@@ -7,9 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityNotFoundException;
 
-/**
- * Implementacja repozytorium dla szablonu rezerwacji, korzystająca ze springowego repozytorium dla bazy danych PostgreSQL.
- */
 @Repository
 public class PostgresBookingTemplateRepository implements BookingTemplateRepository {
 

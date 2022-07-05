@@ -10,17 +10,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * <b>Serwis domenowy</b> odpowiadający za wyliczenie całkowitego kosztu spotkania, na podstawie rezerwacji oraz listy zniżek {@code Discount}.
- */
 class MeetingCostCalculator {
 
-    /**
-     * Zwraca całkowity koszt spotkania.
-     * @param booking rezerwacja, z której do obliczania brany jest podstawowy koszt spotkania
-     * @param discounts lista zniżek uwzględnianych podczas wyliczania całkowitego kosztu spotkania
-     * @return obiekt wartości całkowitego kosztu spotkania, z uwzględnieniem zniżek
-     */
     public MeetingCost calculateMeetingCost(Booking booking, List<Discount> discounts) {
         var baseCost = booking.calculateBaseMeetingCost();
         Map<Discount, BigDecimal> discountValues = calculateDiscounts(baseCost, discounts);

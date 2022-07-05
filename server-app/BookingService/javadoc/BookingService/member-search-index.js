@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"com.ddd.tutio","c":"InfoController","l":"healthCheck()"},{"p":"com.ddd.tutio","c":"InfoController","l":"InfoController()","u":"%3Cinit%3E()"},{"p":"com.ddd.tutio","c":"InfoController","l":"version()"}];updateSearchResults();

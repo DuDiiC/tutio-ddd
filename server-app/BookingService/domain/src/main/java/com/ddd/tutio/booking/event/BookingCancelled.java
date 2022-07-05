@@ -6,9 +6,6 @@ import com.ddd.tutio.booking.BookingId;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * <b>Zdarzenie domenowe</b> anulowania rezerwacji.
- */
 public class BookingCancelled extends DomainEvent {
 
     public final BookingId bookingId;

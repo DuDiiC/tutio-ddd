@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.ddd.tutio.booking.database"},{"l":"com.ddd.tutio.booking.rabbitmq.listener"},{"l":"com.ddd.tutio.booking.rabbitmq.producer"},{"l":"com.ddd.tutio.booking.rest"},{"l":"com.ddd.tutio.config"},{"l":"com.ddd.tutio.course.database"},{"l":"com.ddd.tutio.pupil.database"}];updateSearchResults();

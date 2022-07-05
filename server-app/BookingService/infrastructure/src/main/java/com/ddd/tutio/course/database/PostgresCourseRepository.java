@@ -7,9 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityNotFoundException;
 
-/**
- * Implementacja repozytorium dla kursu, korzystająca ze springowego repozytorium dla bazy danych PostgreSQL.
- */
 @Repository
 public class PostgresCourseRepository implements CourseRepository {
 

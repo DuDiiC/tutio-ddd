@@ -8,9 +8,6 @@ import com.ddd.tutio.pupil.PupilId;
 import java.time.Instant;
 import java.util.UUID;
 
-/**
- * <b>Zdarzenie domenowe</b> informujące o obliczeniu całkowitego kosztu spotkania w ramach rezerwacji.
- */
 public class MeetingCostCalculated extends DomainEvent {
 
     public final BookingId bookingId;

@@ -1,49 +1,47 @@
-# Mikroserwis rezerwacji
+# Booking microservice
 
-### Uruchomienie dodatkowych komponentów
+### Launching additional components
 
-> wymagania: zainstalowany [docker](https://docs.docker.com/get-docker/) oraz [docker-compose](https://docs.docker.com/compose/install/)
+> requirements: [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed
 
-Kontenery mogą zostać uruchomione z użyciem polecenia `docker-compose` w katalogu `/BookingService/docker`:
+Containers can be launched using the `docker-compose` command in the `BookingService/docker` directory:
 
 ```bash
 docker-compose -p tutio up --build -d
 ```
 
-|             komponent             |             narzędzie do zarządzania             |                 dane uwierzytelniające                  |
-|:---------------------------------:|:------------------------------------------------:|:-------------------------------------------------------:|
-|   baza danych <br/>(PostgreSQL)   |       pgAdmin: <br/>http://localhost:9000        | pgAdmin: user@email.com/password <br/>db: user/password |
-| broker wiadomości <br/>(RabbitMQ) | RabbitMQ Management: <br/>http://localhost:15672 |                      user/password                      |
+| component | management tool | credentials |
+|:---:|:---:|:---:|
+| database <br/>(PostgreSQL) | pgAdmin: <br/>http://localhost:9000 | pgAdmin: user@email.com/password <br/>db: user/password |
+| message broker <br/>(RabbitMQ) | RabbitMQ Management: <br/>http://localhost:15672 | user/password |
 
-### Uruchomienie aplikacji
+### Launching the application
 
-> wymagania:
-> - zainstalowana [Java JDK 17](https://openjdk.java.net/projects/jdk/17/)
-> - uruchomione kontenery dodatkowych komponentów (PostgreSQL, RabbitMQ)
+> requirements:
+> - [Java JDK 17](https://openjdk.java.net/projects/jdk/17/) installed
+> - containers of additional components have been launched (PostgreSQL, RabbitMQ)
 
-Aplikacja może zostać uruchomiona przy użyciu narzędzia budowania [Gradle](https://gradle.org/),
-poprzez uruchomienie skryptu w głównym katalogu projektu `/BookingService`:
+The application can be launched using the [Gradle](https://gradle.org/) builder tool, by running the script in the main project directory `/BookingService`:
 
 ```bash
 ./gradlew bootRun
 ```
 
-Aby sprawdzić status aplikacji, udostępniony został endpoint `health`.
-Dla aplikacji uruchomionej w środowisku lokalnym, z domyślnym portem (8080):
+To check the status of the application, the `health` endpoint was created.
+For the application running in a local environment, with the default port (8080):
 
 ```bash
 curl http://localhost:8080/health
 ```
 
-Aplikacja umożliwia symulację dostarczenia nowego zdarzenia domenowego `BookingProcessStarted` poprzez żądanie:
+The application provides a scenario of the delivery of a new [`BookingProcessStarted`](domain/src/main/java/com/ddd/tutio/booking/event/BookingProcessStarted.java) domain event by requesting:
 
 ```bash
 curl http://localhost:8080/booking-process-started
 ```
 
-Po otrzymaniu żądania, w konsoli aplikacji pojawi się informacja o utworzeniu nowego zdarzenia.
-Następnie informacja o odebraniu tego zdarzenia przez subskrybenta (na tym etapie tworzony jest szablon rezerwacji, zapisywany w bazie)
-oraz opublikowaniu nowego zdarzenia `BookingCountdownStarted`.
+After receiving the request, information about creating a new event will appear in the application console.
+Then information about the receipt of this event by the subscriber (at this stage, a reservation template is created and saved in the database) and the publication of a new event [`BookingCountdownStarted`](domain/src/main/java/com/ddd/tutio/booking/event/BookingCountdownStarted.java).
 
 ```
 Produce event: com.ddd.tutio.booking.event.BookingProcessStarted
@@ -51,7 +49,7 @@ Consume event: com.ddd.tutio.booking.event.BookingProcessStarted
 Produce event: com.ddd.tutio.booking.event.BookingCountdownStarted
 ```
 
-Nowy szablon rezerwacji można znaleźć w bazie danych, z użyciem skryptu:
+The new booking template can be found in the database:
 
 ```sql
 SELECT *
@@ -59,20 +57,19 @@ FROM booking.bookings
 ORDER BY db_create_time LIMIT 1;
 ```
 
-Z użycie ID wyszukanego szablonu, możliwe jest również jej wyszukanie przez API serwisu, demonstrując działanie adaptera repozytorium bazy danych:
+Using the ID of the found template, it is also possible to search for it via the service API, demonstrating the operation of the database repository adapter:
 
 ```bash
 curl http://localhost:8080/booking-template/{bookingId}
 ```
 
-Analogiczne żądanie udostępnione zostało dla agregatu rezerwacji, którego kilka przykładowych instancji utworzonych zostało w skrycie
-`/BookingService/docker/config/postgres/sql/03_example_init_values.sql`. Przykładowe żądanie dla jednej z nich:
+A similar request was made available for the reservation aggregate, several example instances of which were created in the script [`/BookingService/docker/config/postgres/sql/03_example_init_values.sql`](docker/config/postgres/sql/03_example_init_values.sql). Sample request for one of them:
 
 ```bash
 curl http://localhost:8080/booking/a8b7d555-368a-4eca-8d88-d341c7041a8d
 ```
 
-W odpowiedzi otrzymujemy obiekt JSON z informacjami na temat pól agregatu:
+In response, we get a JSON object with information about aggregate fields:
 
 ```json
 {

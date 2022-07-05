@@ -7,29 +7,14 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
 
-/**
- * Obiekt wartości czasu trwania spotkania.
- */
 class MeetingDuration implements Serializable {
 
-    /**
-     * Minimalny czas trwania spotkania (30 minut).
-     */
     private static final long MINIMUM_MEETING_DURATION_IN_MILLIS = 30 * 60 * 1000L;
 
-    /**
-     * Maksymalny czas trwania spotkania (180 minut).
-     */
     private static final long MAXIMUM_MEETING_DURATION_IN_MILLIS = 3 * 60 * 60 * 1000L;
 
-    /**
-     * Punkt w czasie planowanego początku spotkania.
-     */
     Instant startTime;
 
-    /**
-     * Punkt w czasie planowanego zakończenia spotkania.
-     */
     Instant endTime;
 
     protected MeetingDuration() {
@@ -54,19 +39,12 @@ class MeetingDuration implements Serializable {
         }
     }
 
-    /**
-     * Zwraca liczbę (z dokładnością do czterech miejsc po przecinku, zaokrąglaną w górę) reprezentującą część godziny, jakiej odpowiada długość spotkania.
-     * @return
-     */
     BigDecimal partOfHour() {
         return BigDecimal
                 .valueOf(duration().toMinutes())
                 .divide(BigDecimal.valueOf(60L), 4, RoundingMode.CEILING);
     }
 
-    /**
-     * Zwraca obiekt {@link Duration}, reprezentujący przedział czasu trwania spotkania.
-     */
     Duration duration() {
         return Duration.between(this.startTime, this.endTime)
                 .plusMinutes(1)
