@@ -2,10 +2,6 @@
 
 The catalog contains the results of the Event Storming sessions in the form of graphics in the `.pdf` format.
 
-# Platforma nauczania online Tutio - Event Storming
-
-Katalog zawiera efekty przeprowadzonych sesji Event Stormingu, w postaci makiet w formacie `.pdf`.
-
 The individual catalogs contain, respectively:
 
 - `/BPES` - Big Picture Event Storming, for the entire Tutio platform,
